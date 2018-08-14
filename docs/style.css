@@ -16,6 +16,7 @@ html, body {
   padding: 0;
 }
 #everything {
+  font-size: 14px;
   max-width: 1200px;
   min-width: 520px;
   display: block;
@@ -23,6 +24,7 @@ html, body {
   margin-top: 14px;
 }
 a {
+  color: blue;
   text-decoration: none;
 }
 a:hover {
@@ -43,13 +45,13 @@ a:hover {
   border-left: 1px solid #666;
   float: right;
   padding: 25px;
-  width: 70%;
+  width: 75%;
 }
 pre {
   padding-left: 10px;
   font-family: 'Roboto Mono', monospace;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 13px;
 }
 .Comment { color: #888; font-weight: normal; }
 #title {
@@ -58,4 +60,7 @@ pre {
 }
 #title a {
   color: black;
+}
+p {
+  line-height: 2;
 }

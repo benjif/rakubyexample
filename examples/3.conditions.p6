@@ -3,6 +3,7 @@ if True {
 }
 
 say "This will happen!" if True;
+say "This will happen!" unless False; # Unless is the same as `if !(condition) { }`
 
 # Numerical Comparisons (==, !=, <=, >=, etc.)
 say "It's greater!" if 2 > 1;

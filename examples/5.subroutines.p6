@@ -4,11 +4,12 @@ sub celsius-from-fahrenheit($degrees) {
 
 say celsius-from-fahrenheit(100); # 100 °F ≃ 37.777778 °C
 
+# Subroutine overloading with multi
 multi add(Int $a, Int $b) {
   $a + $b;
 }
 
-multi add(Str $a, Str $b) { # Same name, different types
+multi add(Str $a, Str $b) { # Same name, different signature
   $a ~ $b;
 }
 

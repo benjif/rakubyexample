@@ -1,6 +1,6 @@
 # Perl 6 By Example
 
-To colorize the example files (examples/\*), run `perl6 colorize.p6`.
+See it in action [here](https://ijneb.github.io/p6byexample/).
 
 # Dependencies
 
@@ -9,4 +9,4 @@ To colorize the example files (examples/\*), run `perl6 colorize.p6`.
 
 # Generating HTML/CSS
 
-Colorize the example files, and then run `generate.p6`.
+Colorize the example files (examples/\*) with `perl6 colorize.p6`, and then run `generate.p6`.
