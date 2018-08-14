@@ -35,7 +35,7 @@ for 'html'.IO.dir -> $f {
 my $out = render-template 'templates/gh.crotmp', {
   links => @index-title,
   e => qq:to/HTML/,
-  <p><h1>Welcome!</h1> This by <i>NO</i> means covers all of the intricacies of Perl 6; if you would like to see more or have no prior programming experience, please visit the <a href=\"https://docs.perl6.org/\">official documentation</a>.</p>
+  <p><h1>Welcome!</h1> This by <i>NO</i> means covers all of the intricacies of Perl 6; if you would like to see more or have no prior programming experience, please visit the <a href=\"https://perl6.org/resources//\">other resources</a>.</p>
   <p>If you haven't already, install Rakudo Perl 6 <a href="https://rakudo.org/files">here</a>, and if you need any help, feel free to join us at <a href="irc://irc.freenode.net/#perl6">#perl6.</a></p>
   <p><a href="https://github.com/ijneb/p6byexample">Here</a> is the GitHub for this page.</p>
   HTML
