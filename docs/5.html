@@ -42,6 +42,31 @@
 
 <span class="Identifier">say</span> add(<span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">2</span>)<span class="Statement">;</span>      <span class="Comment"># 3</span>
 <span class="Identifier">say</span> add(<span class="Special">'</span><span class="Constant">a</span><span class="Special">'</span><span class="Statement">,</span> <span class="Special">'</span><span class="Constant">b</span><span class="Special">'</span>)<span class="Statement">;</span>  <span class="Comment"># ab</span>
+
+<span class="Statement">sub</span> greet(<span class="Type">Str</span> <span class="Statement">:</span><span class="Identifier">$</span><span class="Identifier">name</span><span class="Statement">!,</span> <span class="Type">Str</span> <span class="Statement">:</span><span class="Identifier">$</span><span class="Identifier">lang</span> <span class="Statement">=</span> <span class="Special">'</span><span class="Constant">english</span><span class="Special">'</span>) {  <span class="Comment"># `:` makes the argument named; `:$lang` has a default value of 'english'</span>
+  <span class="Statement">given</span> <span class="Identifier">$</span><span class="Identifier">lang</span> {                                   <span class="Comment"># `!` following a named argument makes it mandatory; shout it!</span>
+    <span class="Special">when</span> <span class="Special">'</span><span class="Constant">english</span><span class="Special">'</span> {
+      <span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Constant">Hello </span><span class="Identifier">$</span><span class="Identifier">name</span><span class="Constant">.</span><span class="Special">&quot;</span><span class="Statement">;</span>
+    }
+    <span class="Special">when</span> <span class="Special">'</span><span class="Constant">spanish</span><span class="Special">'</span> {
+      <span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Constant">Hola </span><span class="Identifier">$</span><span class="Identifier">name</span><span class="Constant">.</span><span class="Special">&quot;</span><span class="Statement">;</span>
+    }
+    <span class="Special">default</span> {
+      <span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Constant">I'm sorry </span><span class="Identifier">$</span><span class="Identifier">name</span><span class="Constant">, I don't know that language.</span><span class="Special">&quot;</span><span class="Statement">;</span>
+    }
+  }
+}
+
+greet(<span class="Constant">name</span> <span class="Statement">=&gt;</span> <span class="Special">'</span><span class="Constant">Abraham</span><span class="Special">'</span>)<span class="Statement">;</span> <span class="Comment"># Hello Abraham.</span>
+greet(<span class="Constant">name</span> <span class="Statement">=&gt;</span> <span class="Special">'</span><span class="Constant">Miguel</span><span class="Special">'</span><span class="Statement">,</span> <span class="Constant">lang</span> <span class="Statement">=&gt;</span> <span class="Special">'</span><span class="Constant">spanish</span><span class="Special">'</span>)<span class="Statement">;</span> <span class="Comment"># Hola Miguel.</span>
+greet(<span class="Constant">name</span> <span class="Statement">=&gt;</span> <span class="Special">'</span><span class="Constant">Sergei</span><span class="Special">'</span><span class="Statement">,</span> <span class="Constant">lang</span> <span class="Statement">=&gt;</span> <span class="Special">'</span><span class="Constant">russian</span><span class="Special">'</span>)<span class="Statement">;</span> <span class="Comment"># I'm sorry Sergei, I don't know that language.</span>
+
+<span class="Statement">sub</span> optional(<span class="Identifier">$</span><span class="Identifier">arg</span><span class="Statement">?</span>) { <span class="Comment"># `?` following an argument makes it optional</span>
+  <span class="Identifier">$</span><span class="Identifier">arg</span><span class="Statement">.</span><span class="Identifier">defined</span><span class="Statement">;</span>
+}
+
+<span class="Identifier">say</span> so optional(<span class="Constant">1</span>)<span class="Statement">;</span> <span class="Comment"># True</span>
+<span class="Identifier">say</span> so optional<span class="Statement">;</span> <span class="Comment"># False</span>
 </pre>
 
       </div>
