@@ -16,52 +16,36 @@
         <ul>
             <li><a href="1.html">1.hello_world</a></li>
             <li><a href="2.html">2.variables</a></li>
-            <li><a href="3.html">3.conditions</a></li>
-            <li><a href="4.html">4.looping</a></li>
-            <li><a href="5.html">5.subroutines</a></li>
-            <li><a href="6.html">6.classes</a></li>
+            <li><a href="3.html">3.types</a></li>
+            <li><a href="4.html">4.conditions</a></li>
+            <li><a href="5.html">5.looping</a></li>
+            <li><a href="6.html">6.subroutines</a></li>
+            <li><a href="7.html">7.classes</a></li>
         </ul>
       </div>
       <div id="content">
         
 <pre id='vimCodeElement'>
-<span class="Comment"># For loops</span>
-<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">a</span> <span class="Statement">=</span> <span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">2</span><span class="Statement">,</span> <span class="Constant">3</span><span class="Statement">;</span>
-
-<span class="Statement">for</span> <span class="Identifier">@</span><span class="Identifier">a</span> <span class="Statement">-&gt;</span> <span class="Identifier">$</span><span class="Identifier">i</span> {
-  <span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">i</span><span class="Statement">;</span>
+<span class="Statement">if</span> <span class="Type">True</span> {
+  <span class="Identifier">say</span> <span class="Special">'</span><span class="Constant">This will happen!</span><span class="Special">'</span><span class="Statement">;</span>
 }
 
-<span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">_</span> <span class="Statement">for</span> <span class="Identifier">@</span><span class="Identifier">a</span><span class="Statement">;</span>
+<span class="Identifier">say</span> <span class="Special">'</span><span class="Constant">This will happen!</span><span class="Special">'</span> <span class="Statement">if</span> <span class="Type">True</span><span class="Statement">;</span>
+<span class="Identifier">say</span> <span class="Special">'</span><span class="Constant">This will happen!</span><span class="Special">'</span> <span class="Statement">unless</span> <span class="Type">False</span><span class="Statement">;</span> <span class="Comment"># Unless is the same as `if !(condition) { }`</span>
 
-<span class="Special">my</span> <span class="Identifier">%</span><span class="Identifier">h</span> <span class="Statement">=</span> <span class="Constant">a</span> <span class="Statement">=&gt;</span> <span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">b</span> <span class="Statement">=&gt;</span> <span class="Constant">2</span><span class="Statement">;</span>
+<span class="Comment"># Numerical Comparisons (==, !=, &lt;=, &gt;=, etc.)</span>
+<span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Constant">It's greater!</span><span class="Special">&quot;</span> <span class="Statement">if</span> <span class="Constant">2</span> <span class="Statement">&gt;</span> <span class="Constant">1</span><span class="Statement">;</span>
 
-<span class="Comment"># `.kv` returns key and value</span>
-<span class="Statement">for</span> <span class="Identifier">%</span><span class="Identifier">h</span><span class="Statement">.</span><span class="Identifier">kv</span> <span class="Statement">-&gt;</span> <span class="Identifier">$</span><span class="Identifier">k</span><span class="Statement">,</span> <span class="Identifier">$</span><span class="Identifier">v</span> { <span class="Comment"># Looping through hashes</span>
-  <span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Identifier">$</span><span class="Identifier">k</span><span class="Constant"> : </span><span class="Identifier">$</span><span class="Identifier">v</span><span class="Special">&quot;</span><span class="Statement">;</span>
-}
+<span class="Comment"># String Comparisons (eq, ne, gt, ge, lt, le, etc.)</span>
+<span class="Special">my</span> <span class="Identifier">$</span><span class="Identifier">name</span> <span class="Statement">=</span> <span class="Special">'</span><span class="Constant">Stanley</span><span class="Special">'</span><span class="Statement">;</span>
+<span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">name</span> <span class="Statement">eq</span> <span class="Special">'</span><span class="Constant">Stanley</span><span class="Special">'</span> <span class="Statement">??</span> <span class="Special">&quot;</span><span class="Constant">It's Stanley!</span><span class="Special">&quot;</span> <span class="Statement">!!</span> <span class="Special">'</span><span class="Constant">Not Stanley</span><span class="Special">'</span><span class="Statement">;</span> <span class="Comment"># Ternary</span>
 
-<span class="Comment"># C style loops</span>
-<span class="Statement">loop</span> (<span class="Special">my</span> <span class="Identifier">$</span><span class="Identifier">i</span> <span class="Statement">=</span> <span class="Constant">0</span><span class="Statement">;</span> <span class="Identifier">$</span><span class="Identifier">i</span> <span class="Statement">&lt;</span> <span class="Constant">10</span><span class="Statement">;</span> <span class="Identifier">$</span><span class="Identifier">i</span><span class="Statement">++</span>) {
-  <span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">i</span><span class="Statement">;</span>
-}
+<span class="Comment"># Smart Matching (~~)</span>
+<span class="Identifier">say</span> so <span class="Special">'</span><span class="Constant">Hello Stanley</span><span class="Special">'</span> <span class="Statement">~~</span> <span class="Type">Str</span><span class="Statement">;</span>  <span class="Comment"># Type Comparisons</span>
+<span class="Identifier">say</span> so <span class="Special">'</span><span class="Constant">Hello Bob</span><span class="Special">'</span> <span class="Statement">~~</span> <span class="Special">/</span><span class="Constant">Bob</span><span class="Special">/</span><span class="Statement">;</span> <span class="Comment"># Regular Expressions Matching</span>
 
-<span class="Comment"># While / Until loops</span>
-<span class="Special">my</span> <span class="Identifier">$</span><span class="Identifier">x</span> <span class="Statement">=</span> <span class="Constant">1</span><span class="Statement">;</span>
-
-<span class="Statement">while</span> <span class="Identifier">$</span><span class="Identifier">x</span> <span class="Statement">&lt;</span> <span class="Constant">4</span> { <span class="Comment"># While loops work while the expression is TRUE</span>
-  <span class="Identifier">print</span> <span class="Identifier">$</span><span class="Identifier">x</span><span class="Statement">++;</span>
-}
-
-<span class="Identifier">$</span><span class="Identifier">x</span> <span class="Statement">=</span> <span class="Constant">1</span><span class="Statement">;</span>
-
-<span class="Identifier">print</span> <span class="Identifier">$</span><span class="Identifier">x</span><span class="Statement">++</span> <span class="Statement">while</span> <span class="Identifier">$</span><span class="Identifier">x</span> <span class="Statement">&lt;</span> <span class="Constant">4</span><span class="Statement">;</span>
-
-<span class="Identifier">$</span><span class="Identifier">x</span> <span class="Statement">=</span> <span class="Constant">1</span><span class="Statement">;</span>
-
-<span class="Statement">until</span> <span class="Identifier">$</span><span class="Identifier">x</span> <span class="Statement">&gt;</span> <span class="Constant">3</span> { <span class="Comment"># Until loops work while the expression is FALSE</span>
-  <span class="Identifier">print</span> <span class="Identifier">$</span><span class="Identifier">x</span><span class="Statement">++;</span>
-}
+<span class="Comment"># Canonical Equivalence / Deep Equality (eqv)</span>
+<span class="Identifier">say</span> so (<span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">2</span>) <span class="Statement">eqv</span> (<span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">3</span>)<span class="Statement">;</span>
 </pre>
 
       </div>
