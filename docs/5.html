@@ -29,6 +29,17 @@
 }
 
 <span class="Identifier">say</span> celsius-from-fahrenheit(<span class="Constant">100</span>)<span class="Statement">;</span> <span class="Comment"># 100 °F ≃ 37.777778 °C</span>
+
+<span class="Statement">multi</span> add(<span class="Type">Int</span> <span class="Identifier">$</span><span class="Identifier">a</span><span class="Statement">,</span> <span class="Type">Int</span> <span class="Identifier">$</span><span class="Identifier">b</span>) {
+  <span class="Identifier">$</span><span class="Identifier">a</span> <span class="Statement">+</span> <span class="Identifier">$</span><span class="Identifier">b</span><span class="Statement">;</span>
+}
+
+<span class="Statement">multi</span> add(<span class="Type">Str</span> <span class="Identifier">$</span><span class="Identifier">a</span><span class="Statement">,</span> <span class="Type">Str</span> <span class="Identifier">$</span><span class="Identifier">b</span>) { <span class="Comment"># Same name, different types</span>
+  <span class="Identifier">$</span><span class="Identifier">a</span> <span class="Statement">~</span> <span class="Identifier">$</span><span class="Identifier">b</span><span class="Statement">;</span>
+}
+
+<span class="Identifier">say</span> add(<span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">2</span>)<span class="Statement">;</span>      <span class="Comment"># 3</span>
+<span class="Identifier">say</span> add(<span class="Special">'</span><span class="Constant">a</span><span class="Special">'</span><span class="Statement">,</span> <span class="Special">'</span><span class="Constant">b</span><span class="Special">'</span>)<span class="Statement">;</span>  <span class="Comment"># ab</span>
 </pre>
 
       </div>
