@@ -2,10 +2,10 @@ use v6;
 
 use Cro::WebApp::Template;
 
-mkdir 'docs' if !'github-site'.IO.d;
+mkdir 'docs' if !'docs'.IO.d;
 
 # Cleanup previous runs
-for 'github-site'.IO.dir -> $f {
+for 'docs'.IO.dir -> $f {
   $f.IO.unlink;
 }
 
