@@ -6,7 +6,7 @@
   <body>
     <div id="everything">
       <div id="title">
-        <a href="/">Perl 6 By Example</a>
+        <a href="index.html">Perl 6 By Example</a>
       </div>
       <div id="nav">
         <h1>Examples</h1>
