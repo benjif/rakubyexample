@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet"> 
+  </head>
+  <body>
+    <div id="everything">
+      <div id="title">
+        <a href="/">Perl 6 By Example</a>
+      </div>
+      <div id="nav">
+        <h1>Examples</h1>
+        <ul>
+          <@links : $l>
+            <li><a href="/e/<$l.key>"><$l.value></a></li>
+          </@>
+        </ul>
+      </div>
+      <div id="content">
+        <&HTML(.e)>
+      </div>
+    </div>
+  </body>
+</html>

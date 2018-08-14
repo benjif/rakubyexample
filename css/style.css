@@ -1,0 +1,49 @@
+html, body {
+  font-family: 'Roboto Mono', monospace;
+  margin: 0;
+  padding: 0;
+}
+#everything {
+  max-width: 1000px;
+  min-width: 520px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 14px;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+#nav {
+  padding: 25px;
+  width: 15%;
+  float: left;
+}
+#nav ul {
+  list-style-type: none;
+}
+#nav li {
+  padding: 5px;
+}
+#content {
+  border-left: 1px solid #666;
+  float: right;
+  padding: 25px;
+  width: 70%;
+}
+pre {
+  padding-left: 10px;
+  font-family: 'Roboto Mono', monospace;
+  text-decoration: none;
+  font-size: 15px;
+}
+.Comment { color: #888; font-weight: normal; }
+#title {
+  text-align: center;
+  font-size: 24px;
+}
+#title a {
+  color: black;
+}
