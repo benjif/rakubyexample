@@ -1,13 +1,12 @@
 # Perl 6 By Example
 
-To colorize the example files (examples/*), run `perl6 colorize.p6`.
+To colorize the example files (examples/\*), run `perl6 colorize.p6`.
 
 # Dependencies
 
 - Text::VimColour
-- Cro
 - Cro::WebApp
 
-# Running
+# Generating HTML/CSS
 
-To run the webserver, use `cro run`.
+Colorize the example files, and then run `generate.p6`.
