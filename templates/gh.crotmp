@@ -12,7 +12,7 @@
         <h1>Examples</h1>
         <ul>
           <@links : $l>
-            <li><a href="/e/<$l.key>.html"><$l.value></a></li>
+            <li><a href="<$l.key>.html"><$l.value></a></li>
           </@>
         </ul>
       </div>
