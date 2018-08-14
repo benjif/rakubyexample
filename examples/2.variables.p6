@@ -6,7 +6,7 @@ my Int $age = 12; # You can specify a type for the variable container
 
 # Positional (@)
 my @animals = 'Cow', 'Pig', 'Horse', 'Duck';
-my @animals = <Cow Pig Horse Duck>; # Same but using quote-words (<>)
+say @animals[0]; # Cow!
 
 # Associative (%)
 my %planet-mass = Earth => 1, Mars => 0.107, Jupiter => 318, Pluto => 0.002;

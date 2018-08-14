@@ -22,6 +22,7 @@ for 'examples'.IO.dir -> $path {
   );
   $css = $highlight.css if !?$css;
   spurt $out, $highlight.html;
+  say "Outputted to $out";
 }
 
 spurt 'css/code.css', $css.subst(/'<!--' || '-->'/, '', :g).subst('text-decoration: underline;', '', :g).subst('font-weight: bold;', '', :g);
