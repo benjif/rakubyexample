@@ -24,4 +24,4 @@ for 'examples'.IO.dir -> $path {
   spurt $out, $highlight.html;
 }
 
-spurt 'css/code.css', $css.subst(/'<!--' || '-->'/, '', :g).subst('text-decoration: underline;', '', :g);
+spurt 'css/code.css', $css.subst(/'<!--' || '-->'/, '', :g).subst('text-decoration: underline;', '', :g).subst('font-weight: bold;', '', :g);
