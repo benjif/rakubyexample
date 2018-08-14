@@ -2,6 +2,10 @@ use Cro::HTTP::Router;
 use Cro::HTTP::Server;
 use Cro::WebApp::Template;
 
+if !'html'.IO.d || 'html'.IO.dir.elems == 0 {
+  die 'Run colorize.p6 first';
+}
+
 my $css = slurp 'css/code.css';
 $css ~= slurp 'css/style.css';
 

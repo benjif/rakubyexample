@@ -8,6 +8,8 @@ if 'html'.IO.d {
   for 'html'.IO.dir -> $f {
     $f.IO.unlink;
   }
+} else {
+  mkdir 'html';
 }
 
 for 'examples'.IO.dir -> $path {
