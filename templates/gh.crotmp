@@ -1,5 +1,8 @@
 <html>
   <head>
+    <title>Perl 6 By Example</title>
+    <meta name="keywords" content="perl6,p6,example,examples,6lang">
+    <meta name="description" content="Learn Perl 6 By Example">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet"> 
   </head>
