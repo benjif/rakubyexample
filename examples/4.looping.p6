@@ -9,7 +9,8 @@ say $_ for @a;
 
 my %h = a => 1, b => 2;
 
-for %h -> $k, $v { # Looping through hashes
+# `.kv` returns key and value
+for %h.kv -> $k, $v { # Looping through hashes
   say "$k : $v";
 }
 

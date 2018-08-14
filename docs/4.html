@@ -36,7 +36,8 @@
 
 <span class="Special">my</span> <span class="Identifier">%</span><span class="Identifier">h</span> <span class="Statement">=</span> <span class="Constant">a</span> <span class="Statement">=&gt;</span> <span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">b</span> <span class="Statement">=&gt;</span> <span class="Constant">2</span><span class="Statement">;</span>
 
-<span class="Statement">for</span> <span class="Identifier">%</span><span class="Identifier">h</span> <span class="Statement">-&gt;</span> <span class="Identifier">$</span><span class="Identifier">k</span><span class="Statement">,</span> <span class="Identifier">$</span><span class="Identifier">v</span> { <span class="Comment"># Looping through hashes</span>
+<span class="Comment"># `.kv` returns key and value</span>
+<span class="Statement">for</span> <span class="Identifier">%</span><span class="Identifier">h</span><span class="Statement">.</span><span class="Identifier">kv</span> <span class="Statement">-&gt;</span> <span class="Identifier">$</span><span class="Identifier">k</span><span class="Statement">,</span> <span class="Identifier">$</span><span class="Identifier">v</span> { <span class="Comment"># Looping through hashes</span>
   <span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Identifier">$</span><span class="Identifier">k</span><span class="Constant"> : </span><span class="Identifier">$</span><span class="Identifier">v</span><span class="Special">&quot;</span><span class="Statement">;</span>
 }
 
