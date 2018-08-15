@@ -16,7 +16,6 @@ html, body {
   padding: 0;
 }
 #everything {
-  font-size: 14px;
   display: block;
   margin: 0 auto;
   margin-top: 14px;
@@ -33,6 +32,7 @@ html, body {
 }
 @media (min-width: 1012px) {
   #everything {
+    font-size: 14px;
     max-width: 1200px;
     min-width: 520px;
   }
@@ -48,12 +48,13 @@ html, body {
 }
 @media (max-width: 1011px) {
   #everything {
+    font-size: 1.3em;
     width: 100%;
   }
   #nav {
     text-align: center;
-    font-size: 20px;
-    border: none;
+    font-size: 1.3em;
+    border-bottom: 2px solid #666;
     float: none;
   }
   #nav ul {
