@@ -48,6 +48,9 @@ html, body {
   #title img {
     width: 32px;
   }
+  #title {
+    font-size: 24px;
+  }
 }
 @media (max-width: 1011px) {
   #everything {
@@ -72,8 +75,16 @@ html, body {
     display: block;
     margin: 0 auto;
   }
+  #title {
+    font-size: 2em;
+  }
   #title img {
     width: 48px;
+  }
+}
+@media (max-width: 750px) {
+  #title {
+    font-size: 1.8em;
   }
 }
 a {
@@ -98,7 +109,6 @@ pre {
 .Comment { color: #888; font-weight: normal; }
 #title {
   text-align: center;
-  font-size: 24px;
 }
 #title a {
   color: black;
