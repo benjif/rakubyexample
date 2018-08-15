@@ -53,6 +53,7 @@ html, body {
     float: none;
   }
   #content pre {
+    font-size: 1em;
     display: block;
     margin: 0 auto;
   }
