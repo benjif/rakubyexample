@@ -17,5 +17,6 @@ say so $name ~~ Str:U; #False
 # `:U`, `:D`, `:_`, etc. are examples of Smileys
 # `:_` is the default smiley
 
-# Perl 6 also allows NATIVE TYPES; these start with a lowercase letter (ex. int, uint64, num64, etc)
+# Perl 6 also allows NATIVE TYPES; these start with a lowercase letter (ex. str, uint64, num64, etc)
+# To use these, include a `use NativeCall;` at the top of your program!
 my int32 $i = 50; # I'm a 32-bit integer!

@@ -5,11 +5,56 @@ html, body {
 }
 #everything {
   font-size: 14px;
-  max-width: 1200px;
-  min-width: 520px;
   display: block;
   margin: 0 auto;
   margin-top: 14px;
+}
+#nav {
+  padding: 25px;
+  /*width: 15%;
+  float: left;*/
+}
+#content {
+  /*float: right;*/
+  padding: 25px;
+  /*width: 75%;*/
+}
+@media (min-width: 1012px) {
+  #everything {
+    max-width: 1200px;
+    min-width: 520px;
+  }
+  #nav {
+    width: 15%;
+    float: left;
+  }
+  #content {
+    border-left: 1px solid #666;
+    width: 75%;
+    float: right;
+  }
+}
+@media (max-width: 1011px) {
+  #everything {
+    width: 100%;
+  }
+  #nav {
+    text-align: center;
+    font-size: 20px;
+    border: none;
+    float: none;
+  }
+  #nav ul {
+    padding-left: 0;
+  }
+  #content {
+    border: none;
+    float: none;
+  }
+  #content pre {
+    display: block;
+    margin: 0 auto;
+  }
 }
 a {
   color: blue;
@@ -18,22 +63,11 @@ a {
 a:hover {
   text-decoration: underline;
 }
-#nav {
-  padding: 25px;
-  width: 15%;
-  float: left;
-}
 #nav ul {
   list-style-type: none;
 }
 #nav li {
   padding: 5px;
-}
-#content {
-  border-left: 1px solid #666;
-  float: right;
-  padding: 25px;
-  width: 75%;
 }
 pre {
   padding-left: 10px;
