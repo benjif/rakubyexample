@@ -1,5 +1,5 @@
 html, body {
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'Open Sans', sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -9,23 +9,34 @@ html, body {
   margin-top: 14px;
 }
 #nav {
+  font-family: 'Roboto Mono', monospace;
   padding: 25px;
-  /*width: 15%;
-  float: left;*/
 }
 #content {
-  /*float: right;*/
   padding: 25px;
-  /*width: 75%;*/
 }
-@media (min-width: 1012px) { /* DESKTOP */
+#github {
+  text-align: center;
+  font-size: 13px;
+}
+#github a {
+  margin-top: 6px;
+  color: black;
+}
+#github img {
+  margin-left: 8px;
+  margin-bottom: 2px;
+  width: 16px;
+  vertical-align: middle;
+}
+@media (min-width: 1000px) { /* DESKTOP */
   #everything {
     font-size: 14px;
     max-width: 1200px;
     min-width: 520px;
   }
   #nav {
-    width: 15%;
+    width: 13%;
     float: left;
   }
   #content {
@@ -40,7 +51,7 @@ html, body {
     font-size: 24px;
   }
 }
-@media (max-width: 1011px) {
+@media (max-width: 999px) {
   #everything {
     font-size: 1.3em;
     width: 100%;
@@ -69,8 +80,11 @@ html, body {
   #title img {
     width: 48px;
   }
+  #github {
+    display: none;
+  }
 }
-@media only screen (max-width: 750px) {
+@media (max-width: 750px) {
   #title {
     font-size: 1.8em;
   }
@@ -89,8 +103,8 @@ a:hover {
   padding: 5px;
 }
 pre {
-  padding-left: 10px;
   font-family: 'Roboto Mono', monospace;
+  padding-left: 10px;
   text-decoration: none;
   font-size: 13px;
 }
@@ -110,5 +124,6 @@ pre {
   margin-right: 5px;
 }
 p {
-  line-height: 2;
+  text-indent: 20px;
+  line-height: 2.5;
 }
