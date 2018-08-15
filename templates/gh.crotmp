@@ -9,7 +9,7 @@
   <body>
     <div id="everything">
       <div id="title">
-        <a href="index.html"><img src="rakudo.png" width="32"> Rakudo Perl 6 By Example</a>
+        <a href="index.html"><img src="rakudo.png"> Rakudo Perl 6 By Example</a>
       </div>
       <div id="nav">
         <h1>Examples</h1>
