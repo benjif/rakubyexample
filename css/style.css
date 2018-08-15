@@ -18,7 +18,7 @@ html, body {
   padding: 25px;
   /*width: 75%;*/
 }
-@media (min-width: 1012px) {
+@media (min-width: 1012px) { /* DESKTOP */
   #everything {
     font-size: 14px;
     max-width: 1200px;
@@ -70,7 +70,7 @@ html, body {
     width: 48px;
   }
 }
-@media (max-width: 750px) {
+@media only screen (max-width: 750px) {
   #title {
     font-size: 1.8em;
   }
