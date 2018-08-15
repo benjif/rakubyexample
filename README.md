@@ -2,6 +2,10 @@
 
 See it in action [here](https://ijneb.github.io/p6byexample/).
 
+## Why?
+
+Several other languages that I've encountered offer a variation of the "\* by example" scheme. They offer short-and-sweet examples to get users started. This is something that I find the [official examples page](http://examples.perl6.org/) not to do well.
+
 ## Contributing
 
 To contribute, fork this repository and add any examples to the `examples` folder. Then, generate the HTML and CSS.
