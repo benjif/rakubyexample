@@ -15,4 +15,4 @@ If you'd like to contribute without making a pull request, feel free to add an i
 
 ### Generating HTML/CSS
 
-Colorize the example files (examples/\*) with `perl6 colorize.p6`, and then run `generate.p6`.
+Colorize the example files (examples/\*) with `perl6 colorize.p6`, and then `perl6 generate.p6`.
