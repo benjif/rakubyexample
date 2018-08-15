@@ -1,4 +1,4 @@
-# Perl 6 is GRADUALLY TYPED — allowing for safety AND the ability to ignore explicit typing!
+# Perl 6 is GRADUALLY TYPED; this allows for safety AND the ability to ignore explicit typing!
 
 # `subset` defines a "sub-type" with additional checks
 subset NumberString of Str where *.Numeric;
