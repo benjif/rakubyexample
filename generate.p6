@@ -9,6 +9,10 @@ for 'docs'.IO.dir -> $f {
   $f.IO.unlink;
 }
 
+for 'images'.IO.dir -> $f {
+  copy($f, 'docs/' ~ $f.basename);
+}
+
 my $css = slurp 'css/code.css';
 $css ~= slurp 'css/style.css';
 

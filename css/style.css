@@ -85,6 +85,14 @@ pre {
 #title a {
   color: black;
 }
+#title a:hover {
+  text-decoration: none;
+}
+#title img {
+  vertical-align: middle;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
 p {
   line-height: 2;
 }
