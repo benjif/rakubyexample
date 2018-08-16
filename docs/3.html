@@ -32,10 +32,10 @@
 <span class="Comment"># Perl 6 is GRADUALLY TYPED; this allows for safety AND the ability to ignore explicit typing!</span>
 
 <span class="Comment"># `subset` defines a &quot;sub-type&quot; with additional checks</span>
-<span class="Statement">subset</span> NumberString <span class="PreProc">of</span> <span class="Type">Str</span> <span class="PreProc">where</span> <span class="Statement">*.</span>Numeric<span class="Statement">;</span>
+<span class="Statement">subset</span> IntString <span class="PreProc">of</span> <span class="Type">Str</span> <span class="PreProc">where</span> <span class="Statement">*.</span><span class="Type">Int</span> <span class="Statement">!~~</span> <span class="Type">Failure</span><span class="Statement">;</span>
 
-<span class="Identifier">say</span> so <span class="Special">&quot;</span><span class="Constant">123</span><span class="Special">&quot;</span> <span class="Statement">~~</span> NumberString<span class="Statement">;</span> <span class="Comment"># True</span>
-<span class="Identifier">say</span> so <span class="Special">&quot;</span><span class="Constant">a23</span><span class="Special">&quot;</span> <span class="Statement">~~</span> NumberString<span class="Statement">;</span> <span class="Comment"># False</span>
+<span class="Identifier">say</span> <span class="Special">'</span><span class="Constant">123</span><span class="Special">'</span> <span class="Statement">~~</span> IntString<span class="Statement">;</span> <span class="Comment"># True</span>
+<span class="Identifier">say</span> <span class="Special">'</span><span class="Constant">a23</span><span class="Special">'</span> <span class="Statement">~~</span> IntString<span class="Statement">;</span> <span class="Comment"># False</span>
 
 <span class="Special">my</span> <span class="Identifier">$</span><span class="Identifier">name</span> <span class="Statement">=</span> <span class="Special">'</span><span class="Constant">Geoffrey</span><span class="Special">'</span><span class="Statement">;</span>
 

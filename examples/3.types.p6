@@ -1,10 +1,10 @@
 # Perl 6 is GRADUALLY TYPED; this allows for safety AND the ability to ignore explicit typing!
 
 # `subset` defines a "sub-type" with additional checks
-subset NumberString of Str where *.Numeric;
+subset IntString of Str where *.Int !~~ Failure;
 
-say so "123" ~~ NumberString; # True
-say so "a23" ~~ NumberString; # False
+say '123' ~~ IntString; # True
+say 'a23' ~~ IntString; # False
 
 my $name = 'Geoffrey';
 
