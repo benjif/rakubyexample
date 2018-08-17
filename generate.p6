@@ -45,3 +45,5 @@ my $out = render-template 'templates/gh.crotmp', {
 spurt 'docs/index.html', $out;
 
 spurt 'docs/style.css', $css;
+
+spurt 'docs/CNAME', 'perl6byexample.com';
