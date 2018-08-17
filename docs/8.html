@@ -3,6 +3,7 @@
     <title>Perl 6 By Example</title>
     <meta name="keywords" content="perl6,rakudo,p6,example,examples,6lang">
     <meta name="description" content="Learn Perl 6 By Example">
+    <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono|Open+Sans" rel="stylesheet"> 
   </head>
@@ -66,6 +67,9 @@
 <span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">b</span> <span class="Statement">=</span> <span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">2</span><span class="Statement">,</span> <span class="Constant">3</span><span class="Statement">;</span>
 
 <span class="Special">my</span> <span class="Identifier">%</span><span class="Identifier">h</span> <span class="Statement">=</span> <span class="Identifier">@</span><span class="Identifier">a</span> <span class="Constant">Z</span><span class="Statement">=&gt;</span> <span class="Identifier">@</span><span class="Identifier">b</span><span class="Statement">;</span> <span class="Comment"># (a =&gt; 1, b =&gt; 2, c =&gt; 3)</span>
+
+<span class="Comment"># Reduction Operators</span>
+<span class="Identifier">say</span> <span class="Statement">[+]</span> <span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">2</span><span class="Statement">,</span> <span class="Constant">3</span><span class="Statement">;</span> <span class="Comment"># 1 + 2 + 3 = 6</span>
 
 <span class="Comment"># XOR Operators (^^, xor, +^)</span>
 <span class="Identifier">say</span> <span class="Type">False</span> <span class="Statement">^^</span> <span class="Type">True</span><span class="Statement">;</span> <span class="Comment"># True</span>

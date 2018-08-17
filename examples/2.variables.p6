@@ -10,7 +10,7 @@ say @animals[0]; # Cow!
 
 # Associative (%)
 my %planet-mass = Earth => 1, Mars => 0.107, Jupiter => 318, Pluto => 0.002;
-my %planet-mass = :Earth(1), :Mars(0.107), :Jupiter(318), :Pluto(0.002); # Same but using colon pairs
+%planet-mass = :Earth(1), :Mars(0.107), :Jupiter(318), :Pluto(0.002); # Same but using colon pairs
 
 # Callable (&)
 my &say-hello = sub { say "hello!" };
@@ -29,5 +29,5 @@ say $?FILE;       # Outputs what file this is in
 # Declarators (my, our, has, anon, state, augment, supersede, let, temp)
 
 my $a = 1;  # Lexically-scope name
-our $a = 1; # Package-scoped name
+our $a = 1; # Package-scoped name (for packages)
 has $a = 1; # Attribute name (for classes)

@@ -35,6 +35,9 @@ my @b = 1, 2, 3;
 
 my %h = @a Z=> @b; # (a => 1, b => 2, c => 3)
 
+# Reduction Operators
+say [+] 1, 2, 3; # 1 + 2 + 3 = 6
+
 # XOR Operators (^^, xor, +^)
 say False ^^ True; # True
 say False xor True; # True; this has looser precedence

@@ -3,6 +3,7 @@
     <title>Perl 6 By Example</title>
     <meta name="keywords" content="perl6,rakudo,p6,example,examples,6lang">
     <meta name="description" content="Learn Perl 6 By Example">
+    <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono|Open+Sans" rel="stylesheet"> 
   </head>
@@ -42,7 +43,7 @@
 
 <span class="Comment"># Associative (%)</span>
 <span class="Special">my</span> <span class="Identifier">%</span><span class="Identifier">planet-mass</span> <span class="Statement">=</span> <span class="Constant">Earth</span> <span class="Statement">=&gt;</span> <span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">Mars</span> <span class="Statement">=&gt;</span> <span class="Constant">0.107</span><span class="Statement">,</span> <span class="Constant">Jupiter</span> <span class="Statement">=&gt;</span> <span class="Constant">318</span><span class="Statement">,</span> <span class="Constant">Pluto</span> <span class="Statement">=&gt;</span> <span class="Constant">0.002</span><span class="Statement">;</span>
-<span class="Special">my</span> <span class="Identifier">%</span><span class="Identifier">planet-mass</span> <span class="Statement">=</span> <span class="Statement">:</span><span class="Constant">Earth</span>(<span class="Constant">1</span>)<span class="Statement">,</span> <span class="Statement">:</span><span class="Constant">Mars</span>(<span class="Constant">0.107</span>)<span class="Statement">,</span> <span class="Statement">:</span><span class="Constant">Jupiter</span>(<span class="Constant">318</span>)<span class="Statement">,</span> <span class="Statement">:</span><span class="Constant">Pluto</span>(<span class="Constant">0.002</span>)<span class="Statement">;</span> <span class="Comment"># Same but using colon pairs</span>
+<span class="Identifier">%</span><span class="Identifier">planet-mass</span> <span class="Statement">=</span> <span class="Statement">:</span><span class="Constant">Earth</span>(<span class="Constant">1</span>)<span class="Statement">,</span> <span class="Statement">:</span><span class="Constant">Mars</span>(<span class="Constant">0.107</span>)<span class="Statement">,</span> <span class="Statement">:</span><span class="Constant">Jupiter</span>(<span class="Constant">318</span>)<span class="Statement">,</span> <span class="Statement">:</span><span class="Constant">Pluto</span>(<span class="Constant">0.002</span>)<span class="Statement">;</span> <span class="Comment"># Same but using colon pairs</span>
 
 <span class="Comment"># Callable (&amp;)</span>
 <span class="Special">my</span> <span class="Identifier">&amp;</span><span class="Identifier">say-hello</span> <span class="Statement">=</span> <span class="Statement">sub</span> { <span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Constant">hello!</span><span class="Special">&quot;</span> }<span class="Statement">;</span>
@@ -61,7 +62,7 @@
 <span class="Comment"># Declarators (my, our, has, anon, state, augment, supersede, let, temp)</span>
 
 <span class="Special">my</span> <span class="Identifier">$</span><span class="Identifier">a</span> <span class="Statement">=</span> <span class="Constant">1</span><span class="Statement">;</span>  <span class="Comment"># Lexically-scope name</span>
-<span class="Special">our</span> <span class="Identifier">$</span><span class="Identifier">a</span> <span class="Statement">=</span> <span class="Constant">1</span><span class="Statement">;</span> <span class="Comment"># Package-scoped name</span>
+<span class="Special">our</span> <span class="Identifier">$</span><span class="Identifier">a</span> <span class="Statement">=</span> <span class="Constant">1</span><span class="Statement">;</span> <span class="Comment"># Package-scoped name (for packages)</span>
 <span class="Special">has</span> <span class="Identifier">$</span><span class="Identifier">a</span> <span class="Statement">=</span> <span class="Constant">1</span><span class="Statement">;</span> <span class="Comment"># Attribute name (for classes)</span>
 </pre>
 
