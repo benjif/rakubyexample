@@ -1,7 +1,7 @@
 <html>
   <head>
-    <title>Perl 6 By Example</title>
-    <meta name="keywords" content="perl6,rakudo,p6,example,examples,6lang">
+    <title>Rakudo Perl 6 By Example</title>
+    <meta name="keywords" content="perl6,rakudo,p6,example,examples,learning,start,tutorial">
     <meta name="description" content="Learn Perl 6 By Example">
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -42,10 +42,10 @@
 <span class="Special">my</span> <span class="Identifier">$</span><span class="Identifier">name</span> <span class="Statement">=</span> <span class="Special">'</span><span class="Constant">Geoffrey</span><span class="Special">'</span><span class="Statement">;</span>
 
 <span class="Comment"># `:D` is a type constraint for DEFINED values only</span>
-<span class="Identifier">say</span> so <span class="Identifier">$</span><span class="Identifier">name</span> <span class="Statement">~~</span> <span class="Type">Str</span><span class="Statement">:</span><span class="Constant">D</span><span class="Statement">;</span> <span class="Comment"># True</span>
+<span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">name</span> <span class="Statement">~~</span> <span class="Type">Str</span><span class="Statement">:</span><span class="Constant">D</span><span class="Statement">;</span> <span class="Comment"># True</span>
 
 <span class="Comment"># `:U` is for UNDEFINED values only</span>
-<span class="Identifier">say</span> so <span class="Identifier">$</span><span class="Identifier">name</span> <span class="Statement">~~</span> <span class="Type">Str</span><span class="Statement">:</span><span class="Constant">U</span><span class="Statement">;</span> <span class="Comment">#False</span>
+<span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">name</span> <span class="Statement">~~</span> <span class="Type">Str</span><span class="Statement">:</span><span class="Constant">U</span><span class="Statement">;</span> <span class="Comment"># False</span>
 
 <span class="Comment"># `:U`, `:D`, `:_`, etc. are examples of Smileys</span>
 <span class="Comment"># `:_` is the default smiley</span>

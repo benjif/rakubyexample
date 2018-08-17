@@ -13,8 +13,8 @@ my $name = 'Stanley';
 say $name eq 'Stanley' ?? "It's Stanley!" !! 'Not Stanley'; # Ternary
 
 # Smart Matching (~~)
-say so 'Hello Stanley' ~~ Str;  # Type Comparisons
+say 'Hello Stanley' ~~ Str;  # Type Comparisons
 say so 'Hello Bob' ~~ /Bob/; # Regular Expressions Matching
 
 # Canonical Equivalence / Deep Equality (eqv)
-say so (1, 2) eqv (1, 3);
+say (1, 2) eqv (1, 3);

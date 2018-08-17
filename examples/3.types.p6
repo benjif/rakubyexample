@@ -9,10 +9,10 @@ say 'a23' ~~ IntString; # False
 my $name = 'Geoffrey';
 
 # `:D` is a type constraint for DEFINED values only
-say so $name ~~ Str:D; # True
+say $name ~~ Str:D; # True
 
 # `:U` is for UNDEFINED values only
-say so $name ~~ Str:U; #False
+say $name ~~ Str:U; # False
 
 # `:U`, `:D`, `:_`, etc. are examples of Smileys
 # `:_` is the default smiley

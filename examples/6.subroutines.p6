@@ -36,5 +36,5 @@ sub optional($arg?) {
   $arg.defined;
 }
 
-say so optional(1); # True
-say so optional; # False
+say optional(1); # True
+say optional; # False
