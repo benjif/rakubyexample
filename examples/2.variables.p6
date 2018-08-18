@@ -16,6 +16,9 @@ my %planet-mass = Earth => 1, Mars => 0.107, Jupiter => 318, Pluto => 0.002;
 my &say-hello = sub { say "hello!" };
 &say-hello();
 
+# Sigil-less
+my \i = 1;
+
 # You can also have constants!
 constant $earth-to-sun = 92960000;
 

@@ -20,3 +20,9 @@ say $name ~~ Str:U; # False
 # Perl 6 also allows NATIVE TYPES; these start with a lowercase letter (ex. str, uint64, num64, etc)
 # To use these, include a `use NativeCall;` at the top of your program!
 my int32 $i = 50; # I'm a 32-bit integer!
+
+# Enumerations
+enum Cat <shorthair siamese bengal sphynx>;
+enum Number (one => 1, two => 2, three => 3);
+
+shorthair.^name; # Cat

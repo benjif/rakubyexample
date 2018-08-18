@@ -18,3 +18,18 @@ my $circle = Circle.new(
 );
 
 say $circle.area; # 7853.98...
+
+# Inheritance
+class Mammal {
+  # Methods, Submethods, Attributes for Mammals
+}
+class Dog is Mammal {
+  # All Methods and Attributes are included from Mammals
+}
+role Pet {
+  # Methods that apply to Pets
+}
+
+# To use roles, use the keyword `does`
+my $dog = new Dog;
+$dog does Pet;
