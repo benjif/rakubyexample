@@ -28,7 +28,7 @@ say 5 ** 2;
 
 # Zip Operators (Z)
 # Quote-words (<>)
-my @l = <a b c> Z (1, 2, 3); # ((a 1) (b 2) (c 3))
+my @z = <a b c> Z (1, 2, 3); # ((a 1) (b 2) (c 3))
 
 my @a = 'a', 'b', 'c';
 my @b = 1, 2, 3;

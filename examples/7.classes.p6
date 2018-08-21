@@ -19,10 +19,10 @@ my $circle = Circle.new(
 
 say $circle.area; # 7853.98...
 
-# Inheritance
 class Mammal {
   # Methods, Submethods, Attributes for Mammals
 }
+# `is` Signifies Inheritance
 class Dog is Mammal {
   # All Methods and Attributes are included from Mammals
 }
