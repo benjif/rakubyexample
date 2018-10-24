@@ -114,6 +114,8 @@ my @squared-primes = ($_ ** 2 if $_.is-prime for @numbers);
 
 # Nested comprehensions can be achieved in different ways. This one uses the 
 # cross product operator `X`:
-
 my @letters-nums = ([$_[0], $_[1]] for <A B> X <1 2>); # ([A 1] [A 2] [B 1] [B 2])
+
+# To get an one-to-correspondence, use the zip operator `Z`:
+my @oto-letters-nums = ([$_[0], $_[1]] for <A B> Z <1 2>); # ([A 1] [B 2])
 
