@@ -4,10 +4,7 @@
 # Comments start with a # and ignored by the Perl 6 compiler.
 # By the way, this is a single-line comment.
 
-#`{
-    This is a multi-line comment which is achieved by using #` followed
-    by matching bracketing characters such as [], (), {}, etc.
-}
+#`{ You can use matching bracketing characters such as [], (), {}, etc. for multi-line comments }
 
 ## Printing to the standard output:
 
