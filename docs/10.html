@@ -1,0 +1,174 @@
+<html>
+  <head>
+    <title>Rakudo Perl 6 By Example</title>
+    <meta name="keywords" content="perl6,rakudo,p6,example,examples,learning,start,tutorial">
+    <meta name="description" content="Learn Perl 6 By Example">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono|Open+Sans" rel="stylesheet"> 
+  </head>
+  <body>
+    <div id="everything">
+      <div id="title">
+        <a href="index.html"><img src="rakudo.png"> Rakudo Perl 6 By Example</a>
+      </div>
+      <div id="github">
+        <a href="https://github.com/ijneb/p6byexample">View me on<img alt="GitHub" src="github.svg"></a>
+      </div>
+      <div id="nav">
+        <h1>Examples</h1>
+        <ul>
+            <li><a href="1.html">1.hello_world</a></li>
+            <li><a href="2.html">2.variables</a></li>
+            <li><a href="3.html">3.types</a></li>
+            <li><a href="4.html">4.conditions</a></li>
+            <li><a href="5.html">5.looping</a></li>
+            <li><a href="6.html">6.subroutines</a></li>
+            <li><a href="7.html">7.arrays</a></li>
+            <li><a href="8.html">8.hashes</a></li>
+            <li><a href="9.html">9.operators</a></li>
+            <li><a href="10.html">10.classes</a></li>
+        </ul>
+      </div>
+      <div id="content">
+        
+<pre id='vimCodeElement'>
+<span class="Comment">## Classes</span>
+<span class="Comment">#---------</span>
+
+<span class="Statement">class</span> Point {
+    <span class="Special">has</span> <span class="Type">Str</span> <span class="Identifier">$</span><span class="Special">!</span><span class="Identifier">name</span><span class="Statement">;</span>   <span class="Comment"># twigil `!` declares a private attribute.</span>
+    <span class="Special">has</span> <span class="Type">Int</span> <span class="Identifier">$</span><span class="Special">.</span><span class="Identifier">x</span><span class="Statement">;</span>      <span class="Comment"># twigil `.` declares an outwardly available attribute </span>
+    <span class="Special">has</span> <span class="Type">Int</span> <span class="Identifier">$</span><span class="Special">.</span><span class="Identifier">y</span><span class="Statement">;</span>      <span class="Comment"># which is equivalent to a private attribute with</span>
+                      <span class="Comment"># a read-only accesor generated automatically.</span>
+
+    <span class="Comment"># this is a private method accesible only within the class. Note</span>
+    <span class="Comment"># the `!` in front of its name.</span>
+    <span class="Statement">method</span> <span class="Statement">!</span>to-center {
+        <span class="Identifier">sqrt</span>(<span class="Identifier">$</span><span class="Special">!</span><span class="Identifier">x</span> <span class="Statement">**</span> <span class="Constant">2</span> <span class="Statement">+</span> <span class="Identifier">$</span><span class="Special">!</span><span class="Identifier">y</span> <span class="Statement">**</span> <span class="Constant">2</span>)<span class="Statement">;</span> <span class="Comment"># use the `!` to access/assign to </span>
+                                   <span class="Comment"># attributes internally</span>
+    }
+
+    <span class="Comment"># this is a public method accesible</span>
+    <span class="Comment"># from outside the class.</span>
+    <span class="Statement">method</span> distance-from-center {
+        <span class="Identifier">self</span><span class="Statement">!</span>to-center<span class="Statement">;</span>           <span class="Comment"># private methods must be invoked using</span>
+                                  <span class="Comment"># `!` on `self` or explicit invocant.</span>
+    }
+
+    <span class="Comment"># this method is also public. </span>
+    <span class="Statement">method</span> set-name(<span class="Type">Str</span> <span class="Identifier">$</span><span class="Identifier">name</span>) {
+        <span class="Identifier">$</span><span class="Special">!</span><span class="Identifier">name</span> <span class="Statement">=</span> <span class="Identifier">$</span><span class="Identifier">name</span><span class="Statement">;</span>
+    }
+
+}
+
+<span class="Comment"># Instantiate a class with the default constructor `new`</span>
+<span class="Comment"># by providing named arguments.</span>
+<span class="Special">my</span> <span class="Identifier">$</span><span class="Identifier">point</span> <span class="Statement">=</span> Point<span class="Statement">.</span><span class="Identifier">new</span>(<span class="Constant">x</span> <span class="Statement">=&gt;</span> <span class="Constant">3</span><span class="Statement">,</span> <span class="Constant">y</span> <span class="Statement">=&gt;</span> <span class="Constant">4</span>)<span class="Statement">;</span>
+
+<span class="Comment"># Private attributes cannot be set with `new` so here it's done after the </span>
+<span class="Comment"># object construction. Nonetheless, this can be achieved during object</span>
+<span class="Comment"># construction by different mechanisms.</span>
+<span class="Identifier">$</span><span class="Identifier">point</span><span class="Statement">.</span>set-name(<span class="Special">'</span><span class="Constant">Point 1</span><span class="Special">'</span>)<span class="Statement">;</span>
+
+<span class="Comment"># Calling a method on the instance object is done with dot notation.</span>
+<span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">point</span><span class="Statement">.</span>distance-from-center<span class="Statement">;</span>
+
+<span class="Comment"># As mentioned previously, free accesor methods are provided whenever</span>
+<span class="Comment"># attributes are declared with the `.` twigil. So:</span>
+<span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">point</span><span class="Statement">.x;</span>
+<span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">point</span><span class="Statement">.</span>y<span class="Statement">;</span>
+
+
+<span class="Statement">class</span> Circle {
+    <span class="Special">has</span> Point <span class="Identifier">$</span><span class="Special">.</span><span class="Identifier">center</span><span class="Statement">;</span>
+    <span class="Special">has</span> <span class="Type">Int</span> <span class="Identifier">$</span><span class="Special">.</span><span class="Identifier">radius</span> <span class="Statement">=</span> <span class="Constant">1</span><span class="Statement">;</span> <span class="Comment"># attributes can have default values</span>
+
+    <span class="Statement">method</span> area {
+        <span class="Identifier">pi</span> <span class="Statement">*</span> <span class="Identifier">$</span><span class="Special">!</span><span class="Identifier">radius</span> <span class="Statement">**</span> <span class="Constant">2</span><span class="Statement">;</span>
+    }
+}
+
+<span class="Special">my</span> <span class="Identifier">$</span><span class="Identifier">circle</span> <span class="Statement">=</span> Circle<span class="Statement">.</span><span class="Identifier">new</span>(
+    <span class="Constant">center</span> <span class="Statement">=&gt;</span> Point<span class="Statement">.</span><span class="Identifier">new</span>(<span class="Constant">x</span> <span class="Statement">=&gt;</span> <span class="Constant">5</span><span class="Statement">,</span> <span class="Constant">y</span> <span class="Statement">=&gt;</span> <span class="Constant">10</span>)<span class="Statement">,</span>
+    <span class="Constant">radius</span> <span class="Statement">=&gt;</span> <span class="Constant">50</span>
+)<span class="Statement">;</span>
+
+<span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">circle</span><span class="Statement">.</span>area<span class="Statement">;</span> <span class="Comment"># 7853.98...</span>
+
+<span class="Comment">## Inheritance - achieved through the use of the keyword `is`.</span>
+<span class="Comment">##------------</span>
+
+<span class="Statement">class</span> Mammal {
+    <span class="Special">has</span> <span class="Identifier">$</span><span class="Special">.</span><span class="Identifier">name</span><span class="Statement">;</span>
+    <span class="Special">has</span> <span class="Identifier">$</span><span class="Special">.</span><span class="Identifier">nourishment-type</span> <span class="Statement">=</span> <span class="Special">&quot;</span><span class="Constant">milk from mother's mammary glands</span><span class="Special">&quot;</span><span class="Statement">;</span>
+
+    <span class="Statement">method</span> sound {
+        <span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Constant">mammal makes sound</span><span class="Special">&quot;</span><span class="Statement">;</span>
+    }
+    <span class="Comment"># And more methods, submethods, attributes common to mammals</span>
+}
+
+
+<span class="Comment">## Roles - a role is declared with `role` and applied with the keyword `does`.</span>
+<span class="Comment">##-------</span>
+<span class="Statement">role</span> Pet {
+    <span class="Statement">method</span> is-companion { <span class="Type">True</span> }
+
+    <span class="Comment"># And other methods that apply to Pets</span>
+}
+
+<span class="Statement">role</span> Shepherd {
+    <span class="Statement">method</span> <span class="PreProc">does</span><span class="Statement">-</span>herd { <span class="Type">True</span> }
+
+    <span class="Comment"># And other methods that apply to Shepherds</span>
+}
+
+<span class="Comment">## Inheritance and roles: Application</span>
+<span class="Comment">##-----------------------</span>
+
+<span class="Statement">class</span> Dog <span class="PreProc">is</span> Mammal <span class="PreProc">does</span> Pet <span class="PreProc">does</span> Shepherd {
+    <span class="Special">has</span> <span class="Identifier">$</span><span class="Special">.</span><span class="Identifier">name</span> <span class="Statement">=</span> <span class="Special">'</span><span class="Constant">Doggy</span><span class="Special">'</span><span class="Statement">;</span>
+
+    <span class="Comment"># sound specific to dogs</span>
+    <span class="Statement">method</span> sound {
+        <span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Constant">woof woof</span><span class="Special">&quot;</span><span class="Statement">;</span>
+    }
+    <span class="Comment"># And more methods, submethods, attributes common to Dogs</span>
+}
+
+<span class="Statement">class</span> Cat <span class="PreProc">is</span> Mammal <span class="PreProc">does</span> Pet {
+    <span class="Special">has</span> <span class="Identifier">$</span><span class="Special">.</span><span class="Identifier">name</span> <span class="Statement">=</span> <span class="Special">'</span><span class="Constant">Cattie</span><span class="Special">'</span><span class="Statement">;</span>
+
+    <span class="Comment"># sound specific to cats</span>
+    <span class="Statement">method</span> sound {
+        <span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Constant">meow</span><span class="Special">&quot;</span><span class="Statement">;</span>
+    }
+    <span class="Comment"># And more methods, submethods, attributes common to Cats</span>
+}
+
+<span class="Special">my</span> <span class="Identifier">$</span><span class="Identifier">cornie</span> <span class="Statement">=</span> Dog<span class="Statement">.</span><span class="Identifier">new</span>(<span class="Constant">name</span> <span class="Statement">=&gt;</span> <span class="Special">'</span><span class="Constant">Cornie</span><span class="Special">'</span>)<span class="Statement">;</span>
+<span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">cornie</span><span class="Statement">.</span><span class="Identifier">name</span><span class="Statement">;</span>   <span class="Comment"># 'Cornie'</span>
+<span class="Identifier">$</span><span class="Identifier">cornie</span><span class="Statement">.</span>sound<span class="Statement">;</span>      <span class="Comment"># 'woof woof'</span>
+
+<span class="Special">my</span> <span class="Identifier">$</span><span class="Identifier">prosia</span> <span class="Statement">=</span> Cat<span class="Statement">.</span><span class="Identifier">new</span>(<span class="Constant">name</span> <span class="Statement">=&gt;</span> <span class="Special">'</span><span class="Constant">Prosia</span><span class="Special">'</span>)<span class="Statement">;</span>
+<span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">prosia</span><span class="Statement">.</span><span class="Identifier">name</span><span class="Statement">;</span>   <span class="Comment"># 'Prosia'</span>
+<span class="Identifier">$</span><span class="Identifier">prosia</span><span class="Statement">.</span>sound<span class="Statement">;</span>      <span class="Comment"># 'meow'</span>
+
+<span class="Statement">if</span> <span class="Identifier">$</span><span class="Identifier">cornie</span><span class="Statement">.</span><span class="Identifier">is</span><span class="Statement">-</span>companion {
+    <span class="Special">my</span> <span class="Identifier">$</span><span class="Identifier">output</span> <span class="Statement">=</span> <span class="Identifier">$</span><span class="Identifier">cornie</span><span class="Statement">.</span><span class="Identifier">name</span> <span class="Statement">~</span> <span class="Special">&quot;</span><span class="Constant"> is a pet.</span><span class="Special">&quot;</span><span class="Statement">;</span>
+    <span class="Identifier">$</span><span class="Identifier">output</span>   <span class="Statement">~=</span> <span class="Special">&quot;</span><span class="Constant"> And is herding the sheep!</span><span class="Special">&quot;</span> <span class="Statement">if</span> <span class="Identifier">$</span><span class="Identifier">cornie</span><span class="Statement">.</span><span class="PreProc">does</span><span class="Statement">-</span>herd<span class="Statement">;</span>
+
+    <span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">output</span><span class="Statement">;</span>
+}
+
+<span class="Statement">if</span> <span class="Identifier">$</span><span class="Identifier">prosia</span><span class="Statement">.</span><span class="Identifier">is</span><span class="Statement">-</span>companion {
+    <span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">prosia</span><span class="Statement">.</span><span class="Identifier">name</span><span class="Statement">,</span> <span class="Special">&quot;</span><span class="Constant"> is a pet</span><span class="Special">&quot;</span><span class="Statement">;</span>
+}
+</pre>
+
+      </div>
+    </div>
+  </body>
+</html>
