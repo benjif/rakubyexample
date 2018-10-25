@@ -18,54 +18,142 @@
       <div id="nav">
         <h1>Examples</h1>
         <ul>
+            <li><a href="1.html">10.classes</a></li>
             <li><a href="1.html">1.hello_world</a></li>
             <li><a href="2.html">2.variables</a></li>
             <li><a href="3.html">3.types</a></li>
             <li><a href="4.html">4.conditions</a></li>
             <li><a href="5.html">5.looping</a></li>
             <li><a href="6.html">6.subroutines</a></li>
-            <li><a href="7.html">7.classes</a></li>
-            <li><a href="8.html">8.operators</a></li>
+            <li><a href="7.html">7.arrays</a></li>
+            <li><a href="8.html">8.hashes</a></li>
+            <li><a href="9.html">9.operators</a></li>
         </ul>
       </div>
       <div id="content">
         
 <pre id='vimCodeElement'>
-<span class="Statement">class</span> Point {
-  <span class="Special">has</span> <span class="Type">Int</span> <span class="Identifier">$</span><span class="Special">.</span><span class="Identifier">x</span><span class="Statement">;</span>
-  <span class="Special">has</span> <span class="Type">Int</span> <span class="Identifier">$</span><span class="Special">.</span><span class="Identifier">y</span><span class="Statement">;</span>
-}
+<span class="Comment">## Lists and Arrays</span>
+<span class="Comment">#------------------</span>
 
-<span class="Statement">class</span> Circle {
-  <span class="Special">has</span> Point <span class="Identifier">$</span><span class="Special">.</span><span class="Identifier">center</span><span class="Statement">;</span>
-  <span class="Special">has</span> <span class="Type">Int</span> <span class="Identifier">$</span><span class="Special">.</span><span class="Identifier">radius</span><span class="Statement">;</span>     <span class="Comment"># Use the `.` Twigil for outwardly available attributes</span>
+<span class="Comment"># Lists and arrays are collections of items. However lists and arrays differ </span>
+<span class="Comment"># in that lists are ordered and inmutable collections of items while arrays </span>
+<span class="Comment"># are mutables. Furthermore, lists are sort of ephemeral since they cease to</span>
+<span class="Comment"># exist as soon as they been used while arrays tend to persist throughout the</span>
+<span class="Comment"># program.</span>
 
-  <span class="Statement">method</span> area() {
-    <span class="Identifier">pi</span> <span class="Statement">*</span> <span class="Identifier">$</span><span class="Special">!</span><span class="Identifier">radius</span> <span class="Statement">**</span> <span class="Constant">2</span><span class="Statement">;</span> <span class="Comment"># Use the `!` Twigil when accessing attributes internally</span>
-  }
-}
+<span class="Comment"># Create a list by enumerating its values, separated by commas. Optionally</span>
+<span class="Comment"># enclose them in parentheses for delimitation. In the REPL:</span>
 
-<span class="Special">my</span> <span class="Identifier">$</span><span class="Identifier">circle</span> <span class="Statement">=</span> Circle<span class="Statement">.</span><span class="Identifier">new</span>(
-  <span class="Constant">center</span> <span class="Statement">=&gt;</span> Point<span class="Statement">.</span><span class="Identifier">new</span>(<span class="Constant">x</span> <span class="Statement">=&gt;</span> <span class="Constant">5</span><span class="Statement">,</span> <span class="Constant">y</span> <span class="Statement">=&gt;</span> <span class="Constant">10</span>)<span class="Statement">,</span>
-  <span class="Constant">radius</span> <span class="Statement">=&gt;</span> <span class="Constant">50</span>
-)<span class="Statement">;</span>
+<span class="Comment">#&gt; 2, 3, 5</span>
+<span class="Error">#(</span><span class="Comment">2 3 5)</span>
+<span class="Comment">#&gt; (2, 3, 5) # same as before</span>
+<span class="Error">#(</span><span class="Comment">2 3 5)</span>
+<span class="Comment">#&gt; for 2, 3, 5 { print $_ }</span>
+<span class="Comment">#235</span>
 
-<span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">circle</span><span class="Statement">.</span>area<span class="Statement">;</span> <span class="Comment"># 7853.98...</span>
+<span class="Comment"># To create an array, assign a collections of items to a variable prefixed with</span>
+<span class="Comment"># the sigil @. All the following accomplish the same thing, that is, creating</span>
+<span class="Comment"># an array:</span>
 
-<span class="Statement">class</span> Mammal {
-  <span class="Comment"># Methods, Submethods, Attributes for Mammals</span>
-}
-<span class="Comment"># `is` Signifies Inheritance</span>
-<span class="Statement">class</span> Dog <span class="PreProc">is</span> Mammal {
-  <span class="Comment"># All Methods and Attributes are included from Mammals</span>
-}
-<span class="Statement">role</span> Pet {
-  <span class="Comment"># Methods that apply to Pets</span>
-}
+<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">bin-numerals</span> <span class="Statement">=</span> <span class="Constant">0</span><span class="Statement">,</span> <span class="Constant">1</span><span class="Statement">;</span>
+<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">dec-numerals</span> <span class="Statement">=</span> (<span class="Constant">0</span><span class="Statement">,</span> <span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">2</span><span class="Statement">,</span> <span class="Constant">3</span><span class="Statement">,</span> <span class="Constant">4</span><span class="Statement">,</span> <span class="Constant">5</span><span class="Statement">,</span> <span class="Constant">6</span><span class="Statement">,</span> <span class="Constant">7</span><span class="Statement">,</span> <span class="Constant">8</span><span class="Statement">,</span> <span class="Constant">9</span>)<span class="Statement">;</span>
+<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">vowels</span> <span class="Statement">=</span> <span class="Special">&lt;</span><span class="Constant">a e i o v</span><span class="Special">&gt;</span><span class="Statement">;</span> <span class="Comment"># use &lt;&gt; for items without spaces in them</span>
 
-<span class="Comment"># To use roles, use the keyword `does`</span>
-<span class="Special">my</span> <span class="Identifier">$</span><span class="Identifier">dog</span> <span class="Statement">=</span> <span class="Identifier">new</span> Dog<span class="Statement">;</span>
-<span class="Identifier">$</span><span class="Identifier">dog</span> <span class="PreProc">does</span> Pet<span class="Statement">;</span>
+<span class="Comment"># Arrays/lists are 0-indexed and items are accessed/updated by using the</span>
+<span class="Comment"># square bracket operator `[...]`:</span>
+<span class="Identifier">say</span> <span class="Identifier">@</span><span class="Identifier">bin-numerals</span>[<span class="Constant">0</span>]<span class="Statement">;</span> <span class="Comment"># 0 </span>
+<span class="Identifier">say</span> <span class="Identifier">@</span><span class="Identifier">bin-numerals</span>[<span class="Constant">1</span>]<span class="Statement">;</span> <span class="Comment"># 1</span>
+<span class="Identifier">say</span> <span class="Identifier">@</span><span class="Identifier">vowels</span>[<span class="Constant">0</span>]<span class="Statement">;</span>       <span class="Comment"># 'a'</span>
+<span class="Identifier">say</span> <span class="Identifier">@</span><span class="Identifier">vowels</span>[<span class="Constant">4</span>]<span class="Statement">;</span>       <span class="Comment"># 'v'. Oops, not a vowel!</span>
+<span class="Identifier">@</span><span class="Identifier">vowels</span>[<span class="Constant">4</span>] <span class="Statement">=</span> <span class="Special">'</span><span class="Constant">u</span><span class="Special">'</span><span class="Statement">;</span>     <span class="Comment"># assignment </span>
+<span class="Identifier">say</span> <span class="Identifier">@</span><span class="Identifier">vowels</span>[<span class="Constant">4</span>]<span class="Statement">;</span>       <span class="Comment"># 'u'. This is the right vowel!</span>
+
+<span class="Comment"># Arrays can host values of different types:</span>
+<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">mix-array</span> <span class="Statement">=</span> <span class="Special">'</span><span class="Constant">A</span><span class="Special">'</span><span class="Statement">,</span> <span class="Constant">12</span><span class="Statement">,</span> <span class="Constant">1E2</span><span class="Statement">;</span>
+
+<span class="Comment"># Or you can constraint their type so as to accept only a specific type:</span>
+<span class="Special">my</span> <span class="Type">Int</span> <span class="Identifier">@</span><span class="Identifier">only-integers</span> <span class="Statement">=</span> <span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">2</span><span class="Statement">,</span> <span class="Constant">3</span><span class="Statement">;</span>
+
+<span class="Comment"># Arrays can have fixed sizes. Specify it inside the square bracket during </span>
+<span class="Comment"># declaration/initialization:</span>
+<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">earth-moons</span>[<span class="Constant">1</span>]<span class="Statement">;</span>  <span class="Comment"># accepts only one element</span>
+<span class="Identifier">@</span><span class="Identifier">earth-moons</span>[<span class="Constant">0</span>] <span class="Statement">=</span> <span class="Special">'</span><span class="Constant">The Moon</span><span class="Special">'</span><span class="Statement">;</span>
+
+<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">mars-moons</span>[<span class="Constant">2</span>] <span class="Statement">=</span> <span class="Special">&lt;</span><span class="Constant">Rhobos Deimos</span><span class="Special">&gt;</span><span class="Statement">;</span>
+
+<span class="Comment"># Arrays/lists can be nested:</span>
+<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">nested-array</span> <span class="Statement">=</span> (<span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">2</span><span class="Statement">,</span> <span class="Constant">3</span>)<span class="Statement">,</span> (<span class="Special">'</span><span class="Constant">a</span><span class="Special">'</span><span class="Statement">,</span> <span class="Special">'</span><span class="Constant">b</span><span class="Special">'</span><span class="Statement">,</span> <span class="Special">'</span><span class="Constant">c</span><span class="Special">'</span>)<span class="Statement">;</span>
+<span class="Statement">for</span> <span class="Identifier">@</span><span class="Identifier">nested-array</span> { <span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">_</span> }<span class="Statement">;</span> <span class="Comment"># (1, 2, 3) (a b c) </span>
+
+<span class="Comment"># Besides one-dimensional, arrays can be multidimensional (matrices). What would</span>
+<span class="Comment"># be columns are separated by ; inside of what would be rows:</span>
+<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">students</span> <span class="Statement">=</span> [<span class="Special">'</span><span class="Constant">Bob</span><span class="Special">'</span><span class="Statement">;</span> <span class="Constant">75</span>]<span class="Statement">,</span> [<span class="Special">'</span><span class="Constant">Alice</span><span class="Special">'</span><span class="Statement">;</span> <span class="Constant">80</span>]<span class="Statement">,</span> [<span class="Special">'</span><span class="Constant">Era</span><span class="Special">'</span><span class="Statement">;</span> <span class="Constant">93</span>]<span class="Statement">;</span>
+<span class="Identifier">say</span> <span class="Identifier">@</span><span class="Identifier">students</span>[<span class="Constant">0</span>]<span class="Statement">;</span>     <span class="Comment"># [Bob 75]</span>
+<span class="Identifier">say</span> <span class="Identifier">@</span><span class="Identifier">students</span>[<span class="Constant">0</span>][<span class="Constant">0</span>]<span class="Statement">;</span>  <span class="Comment"># 'Bob'</span>
+<span class="Identifier">say</span> <span class="Identifier">@</span><span class="Identifier">students</span>[<span class="Constant">0</span>][<span class="Constant">1</span>]<span class="Statement">;</span>  <span class="Comment"># 75</span>
+<span class="Identifier">say</span> <span class="Identifier">@</span><span class="Identifier">students</span>[<span class="Constant">2</span>][<span class="Constant">0</span>]<span class="Statement">;</span>  <span class="Comment"># 'Era'</span>
+<span class="Identifier">say</span> <span class="Identifier">@</span><span class="Identifier">students</span>[<span class="Constant">2</span>][<span class="Constant">1</span>]<span class="Statement">;</span>  <span class="Comment"># 93</span>
+
+<span class="Comment">## Some methods</span>
+<span class="Comment">##-------------</span>
+
+<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">planets</span> <span class="Statement">=</span> <span class="Special">'</span><span class="Constant">Earth</span><span class="Special">'</span><span class="Statement">;</span>
+
+<span class="Comment"># `elems` - counts the number of items of an array/list:</span>
+<span class="Identifier">say</span> <span class="Identifier">@</span><span class="Identifier">planets</span><span class="Statement">.</span><span class="Identifier">elems</span><span class="Statement">;</span> <span class="Comment"># 1</span>
+<span class="Identifier">say</span> <span class="Identifier">elems</span> <span class="Identifier">@</span><span class="Identifier">planets</span><span class="Statement">;</span> <span class="Comment"># 1</span>
+
+<span class="Comment"># `push` - adds a new item to the end of the array.</span>
+<span class="Identifier">@</span><span class="Identifier">planets</span><span class="Statement">.</span><span class="Identifier">push</span>(<span class="Special">'</span><span class="Constant">Mars</span><span class="Special">'</span>)<span class="Statement">;</span>
+<span class="Identifier">push</span> <span class="Identifier">@</span><span class="Identifier">planets</span><span class="Statement">,</span> <span class="Special">'</span><span class="Constant">Mars</span><span class="Special">'</span><span class="Statement">;</span> <span class="Comment"># same thing</span>
+
+<span class="Comment"># `pop` - removes an item from the end and return it.</span>
+<span class="Identifier">@</span><span class="Identifier">planets</span><span class="Statement">.</span><span class="Identifier">pop</span><span class="Statement">;</span>
+<span class="Identifier">pop</span> <span class="Identifier">@</span><span class="Identifier">planets</span><span class="Statement">;</span> <span class="Comment"># same thing</span>
+
+<span class="Comment"># `append` - add new item(s) to the end of the array.</span>
+<span class="Identifier">@</span><span class="Identifier">planets</span><span class="Statement">.</span>append(<span class="Special">&lt;</span><span class="Constant">Mars Jupiter</span><span class="Special">&gt;</span>)<span class="Statement">;</span>
+append <span class="Identifier">@</span><span class="Identifier">planets</span><span class="Statement">,</span> (<span class="Special">'</span><span class="Constant">Saturn</span><span class="Special">'</span><span class="Statement">,</span> <span class="Special">'</span><span class="Constant">Uranus</span><span class="Special">'</span><span class="Statement">,</span> <span class="Special">'</span><span class="Constant">Neptune</span><span class="Special">'</span>)<span class="Statement">;</span> <span class="Comment"># similar thing</span>
+
+<span class="Comment"># 'unshift` - adds a new item to the beginning of the array.</span>
+<span class="Identifier">@</span><span class="Identifier">planets</span><span class="Statement">.</span><span class="Identifier">unshift</span>(<span class="Special">'</span><span class="Constant">Venus</span><span class="Special">'</span>)<span class="Statement">;</span>
+<span class="Identifier">unshift</span> <span class="Identifier">@</span><span class="Identifier">planets</span><span class="Statement">,</span> <span class="Special">'</span><span class="Constant">Venus</span><span class="Special">'</span><span class="Statement">;</span> <span class="Comment"># same thing</span>
+
+<span class="Comment"># `shift` - removes an item from the beginning of the array and returns it.</span>
+<span class="Identifier">@</span><span class="Identifier">planets</span><span class="Statement">.</span><span class="Identifier">shift</span><span class="Statement">;</span>
+<span class="Identifier">shift</span> <span class="Identifier">@</span><span class="Identifier">planets</span><span class="Statement">;</span> <span class="Comment"># same thing</span>
+
+<span class="Comment"># `prepend` - add new item(s) to the beginning of the array.</span>
+<span class="Identifier">@</span><span class="Identifier">planets</span><span class="Statement">.</span>prepend(<span class="Special">'</span><span class="Constant">Venus</span><span class="Special">'</span>)<span class="Statement">;</span>
+prepend <span class="Identifier">@</span><span class="Identifier">planets</span><span class="Statement">,</span> <span class="Special">'</span><span class="Constant">Mercury</span><span class="Special">'</span><span class="Statement">;</span>  <span class="Comment"># similar thing</span>
+
+<span class="Comment"># `head` - returns first n numbers of items from an array</span>
+<span class="Identifier">say</span> <span class="Identifier">@</span><span class="Identifier">planets</span><span class="Statement">.</span>head<span class="Statement">;</span>    <span class="Comment"># (Mercury)</span>
+<span class="Identifier">say</span> <span class="Identifier">@</span><span class="Identifier">planets</span><span class="Statement">.</span>head(<span class="Constant">2</span>)<span class="Statement">;</span> <span class="Comment"># (Mercury Venus)</span>
+
+<span class="Comment"># `tail` - returns last n numbers of items from an array</span>
+<span class="Identifier">say</span> <span class="Identifier">@</span><span class="Identifier">planets</span><span class="Statement">.</span>tail<span class="Statement">;</span>    <span class="Comment"># (Neptune)</span>
+<span class="Identifier">say</span> <span class="Identifier">@</span><span class="Identifier">planets</span><span class="Statement">.</span>tail(<span class="Constant">2</span>)<span class="Statement">;</span> <span class="Comment"># (Uranus Neptune)</span>
+
+<span class="Comment">## List comprehensions</span>
+<span class="Comment">##--------------------</span>
+
+<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">numbers</span> <span class="Statement">=</span> <span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">2</span><span class="Statement">,</span> <span class="Constant">3</span><span class="Statement">,</span> <span class="Constant">4</span><span class="Statement">,</span> <span class="Constant">5</span><span class="Statement">,</span> <span class="Constant">6</span><span class="Statement">,</span> <span class="Constant">7</span><span class="Statement">,</span> <span class="Constant">8</span><span class="Statement">,</span> <span class="Constant">9</span><span class="Statement">,</span> <span class="Constant">10</span><span class="Statement">;</span>
+
+<span class="Comment"># Statement modifiers and blocks can be combined to create list comprehensions.</span>
+<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">squares</span> <span class="Statement">=</span> (<span class="Identifier">$</span><span class="Identifier">_</span> <span class="Statement">**</span> <span class="Constant">2</span> <span class="Statement">for</span> <span class="Identifier">@</span><span class="Identifier">numbers</span>)<span class="Statement">;</span>
+
+<span class="Comment"># Conditionals can be applied too.</span>
+<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">squared-primes</span> <span class="Statement">=</span> (<span class="Identifier">$</span><span class="Identifier">_</span> <span class="Statement">**</span> <span class="Constant">2</span> <span class="Statement">if</span> <span class="Identifier">$</span><span class="Identifier">_</span><span class="Statement">.</span><span class="Identifier">is</span><span class="Statement">-</span>prime <span class="Statement">for</span> <span class="Identifier">@</span><span class="Identifier">numbers</span>)<span class="Statement">;</span>
+
+<span class="Comment"># Nested comprehensions can be achieved in different ways. This one uses the </span>
+<span class="Comment"># cross product operator `X`:</span>
+<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">letters-nums</span> <span class="Statement">=</span> ([<span class="Identifier">$</span><span class="Identifier">_</span>[<span class="Constant">0</span>]<span class="Statement">,</span> <span class="Identifier">$</span><span class="Identifier">_</span>[<span class="Constant">1</span>]] <span class="Statement">for</span> <span class="Special">&lt;</span><span class="Constant">A B</span><span class="Special">&gt;</span> <span class="Statement">X</span> <span class="Special">&lt;</span><span class="Constant">1 2</span><span class="Special">&gt;</span>)<span class="Statement">;</span> <span class="Comment"># ([A 1] [A 2] [B 1] [B 2])</span>
+
+<span class="Comment"># To get an one-to-correspondence, use the zip operator `Z`:</span>
+<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">oto-letters-nums</span> <span class="Statement">=</span> ([<span class="Identifier">$</span><span class="Identifier">_</span>[<span class="Constant">0</span>]<span class="Statement">,</span> <span class="Identifier">$</span><span class="Identifier">_</span>[<span class="Constant">1</span>]] <span class="Statement">for</span> <span class="Special">&lt;</span><span class="Constant">A B</span><span class="Special">&gt;</span> <span class="Statement">Z</span> <span class="Special">&lt;</span><span class="Constant">1 2</span><span class="Special">&gt;</span>)<span class="Statement">;</span> <span class="Comment"># ([A 1] [B 2])</span>
+
 </pre>
 
       </div>

@@ -18,81 +18,120 @@
       <div id="nav">
         <h1>Examples</h1>
         <ul>
+            <li><a href="1.html">10.classes</a></li>
             <li><a href="1.html">1.hello_world</a></li>
             <li><a href="2.html">2.variables</a></li>
             <li><a href="3.html">3.types</a></li>
             <li><a href="4.html">4.conditions</a></li>
             <li><a href="5.html">5.looping</a></li>
             <li><a href="6.html">6.subroutines</a></li>
-            <li><a href="7.html">7.classes</a></li>
-            <li><a href="8.html">8.operators</a></li>
+            <li><a href="7.html">7.arrays</a></li>
+            <li><a href="8.html">8.hashes</a></li>
+            <li><a href="9.html">9.operators</a></li>
         </ul>
       </div>
       <div id="content">
         
 <pre id='vimCodeElement'>
-<span class="Comment"># Here's some Perl 6 Operators!</span>
+<span class="Comment">## Hashes</span>
+<span class="Comment">##-------</span>
 
-<span class="Comment"># String Concatenation (~) &amp; String Repetition (x)</span>
-<span class="Identifier">say</span> <span class="Special">'</span><span class="Constant">w</span><span class="Special">'</span> <span class="Statement">~</span> <span class="Special">'</span><span class="Constant">o</span><span class="Special">'</span> <span class="Statement">x</span> <span class="Constant">5</span><span class="Statement">;</span> <span class="Comment"># wooooo</span>
+<span class="Comment"># Hashes are like an unordered arrays, where each value is associated </span>
+<span class="Comment"># with a string (known as a key), rather than a positional index.</span>
 
-<span class="Comment"># List Repetition (xx)</span>
-<span class="Identifier">say</span> [<span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">2</span>] <span class="Statement">xx</span> <span class="Constant">2</span><span class="Statement">;</span> <span class="Comment"># ([1 2] [1 2])</span>
+<span class="Comment"># Hashes use the % sigil and are created by enumerating pairs of keys and</span>
+<span class="Comment"># values.</span>
 
-<span class="Comment"># Greatest Common Divisor &amp; Least Common Multiple (gcd, lcm)</span>
-<span class="Identifier">say</span> <span class="Constant">27</span> gcd <span class="Constant">18</span><span class="Statement">;</span> <span class="Comment"># 9</span>
-<span class="Identifier">say</span> <span class="Constant">35</span> lcm <span class="Constant">10</span><span class="Statement">;</span> <span class="Comment"># 10</span>
+<span class="Special">my</span> <span class="Identifier">%</span><span class="Identifier">person</span> <span class="Statement">=</span>
+    <span class="Constant">name</span> <span class="Statement">=&gt;</span> <span class="Special">'</span><span class="Constant">Andreas</span><span class="Special">'</span><span class="Statement">,</span>
+    <span class="Constant">lastname</span> <span class="Statement">=&gt;</span> <span class="Special">'</span><span class="Constant">Stoa</span><span class="Special">'</span><span class="Statement">,</span>
+    <span class="Constant">age</span> <span class="Statement">=&gt;</span> <span class="Constant">41</span><span class="Statement">;</span>
 
-<span class="Comment"># Perl 6 has full unicode support, here's some notable options of Unicode in Perl 6 Operators:</span>
+<span class="Identifier">say</span> <span class="Identifier">%</span><span class="Identifier">person</span>{<span class="Special">'</span><span class="Constant">name</span><span class="Special">'</span>}<span class="Statement">;</span>           <span class="Comment"># accessing an element</span>
+<span class="Identifier">%</span><span class="Identifier">person</span>{<span class="Special">'</span><span class="Constant">age</span><span class="Special">'</span>} <span class="Statement">=</span> <span class="Constant">25</span><span class="Statement">;</span>           <span class="Comment"># updating the value of an element</span>
+<span class="Identifier">%</span><span class="Identifier">person</span>{<span class="Special">'</span><span class="Constant">country</span><span class="Special">'</span>} <span class="Statement">=</span> <span class="Special">'</span><span class="Constant">Greece</span><span class="Special">'</span><span class="Statement">;</span> <span class="Comment"># adding a new pair</span>
 
-<span class="Identifier">say</span> <span class="Constant">5</span> ÷ <span class="Constant">2</span><span class="Statement">;</span> <span class="Comment"># 2.5</span>
-<span class="Identifier">say</span> <span class="Constant">5</span> <span class="Statement">/</span> <span class="Constant">2</span><span class="Statement">;</span>
+<span class="Comment"># All values of a hash can have type constraints.</span>
+<span class="Special">my</span> <span class="Type">Int</span> <span class="Identifier">%</span><span class="Identifier">binaries</span> <span class="Statement">=</span> <span class="Constant">zero</span> <span class="Statement">=&gt;</span> <span class="Constant">0</span><span class="Statement">,</span> <span class="Constant">one</span> <span class="Statement">=&gt;</span> <span class="Constant">1</span><span class="Statement">;</span>
 
-<span class="Identifier">say</span> <span class="Constant">5</span> × <span class="Constant">2</span><span class="Statement">;</span> <span class="Comment"># 10</span>
-<span class="Identifier">say</span> <span class="Constant">5</span> <span class="Statement">*</span> <span class="Constant">2</span><span class="Statement">;</span>
+<span class="Special">my</span> <span class="Identifier">%</span><span class="Identifier">booleans</span> <span class="PreProc">of</span> <span class="Type">Bool</span> <span class="Statement">=</span> <span class="Constant">t</span> <span class="Statement">=&gt;</span> <span class="Type">True</span><span class="Statement">,</span> <span class="Constant">f</span> <span class="Statement">=&gt;</span> <span class="Type">False</span><span class="Statement">;</span> <span class="Comment"># similar thing</span>
 
-<span class="Identifier">say</span> <span class="Constant">5</span> ≤ <span class="Constant">2</span><span class="Statement">;</span> <span class="Comment"># False</span>
-<span class="Identifier">say</span> <span class="Constant">5</span> <span class="Statement">&lt;=</span> <span class="Constant">2</span><span class="Statement">;</span>
+<span class="Comment"># The keys of a hash can also have type constraints.</span>
+<span class="Special">my</span> <span class="Identifier">%</span><span class="Identifier">doubles</span>{<span class="Type">Int</span>} <span class="PreProc">of</span> <span class="Type">Int</span><span class="Statement">;</span> <span class="Comment"># constraining both keys and values</span>
 
-<span class="Identifier">say</span> <span class="Constant">5</span>²<span class="Statement">;</span> <span class="Comment"># 25</span>
-<span class="Identifier">say</span> <span class="Constant">5</span> <span class="Statement">**</span> <span class="Constant">2</span><span class="Statement">;</span>
+<span class="Identifier">say</span> <span class="Identifier">%</span><span class="Identifier">doubles</span>{<span class="Constant">21</span>} <span class="Statement">=</span> <span class="Constant">42</span><span class="Statement">;</span>
 
-<span class="Comment"># Alongside tons more (e.g. ∈ ∉ ∋ ∌ ⊂ ⊄ ⊃ ⊅ ⊆ ⊈ ⊇ ⊉ ≼ ≽ o ∘ ∩ ⊍ ⊖ ≠)</span>
+<span class="Comment">## Some methods</span>
+<span class="Comment">##-------------</span>
 
-<span class="Comment"># Zip Operators (Z)</span>
-<span class="Comment"># Quote-words (&lt;&gt;)</span>
-<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">z</span> <span class="Statement">=</span> <span class="Special">&lt;</span><span class="Constant">a b c</span><span class="Special">&gt;</span> <span class="Statement">Z</span> (<span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">2</span><span class="Statement">,</span> <span class="Constant">3</span>)<span class="Statement">;</span> <span class="Comment"># ((a 1) (b 2) (c 3))</span>
+<span class="Special">my</span> <span class="Identifier">%</span><span class="Identifier">natural-satellites</span> <span class="Statement">=</span> ( <span class="Comment"># during assignment, pairs can be sorrounded by parens</span>
+    <span class="Constant">mercury</span> <span class="Statement">=&gt;</span> <span class="Constant">0</span><span class="Statement">,</span>
+    <span class="Constant">jupiter</span> <span class="Statement">=&gt;</span> <span class="Constant">79</span><span class="Statement">,</span>
+    <span class="Constant">venus</span>   <span class="Statement">=&gt;</span> <span class="Constant">0</span><span class="Statement">,</span>
+    <span class="Constant">saturn</span>  <span class="Statement">=&gt;</span> <span class="Constant">62</span><span class="Statement">,</span>
+    <span class="Constant">earth</span>   <span class="Statement">=&gt;</span> <span class="Constant">1</span><span class="Statement">,</span>
+    <span class="Constant">nepture</span> <span class="Statement">=&gt;</span> <span class="Constant">14</span><span class="Statement">,</span>
+    <span class="Constant">mars</span>    <span class="Statement">=&gt;</span> <span class="Constant">2</span><span class="Statement">,</span>
+    <span class="Constant">uranus</span>  <span class="Statement">=&gt;</span> <span class="Constant">27</span>
+)<span class="Statement">;</span>
 
-<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">a</span> <span class="Statement">=</span> <span class="Special">'</span><span class="Constant">a</span><span class="Special">'</span><span class="Statement">,</span> <span class="Special">'</span><span class="Constant">b</span><span class="Special">'</span><span class="Statement">,</span> <span class="Special">'</span><span class="Constant">c</span><span class="Special">'</span><span class="Statement">;</span>
-<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">b</span> <span class="Statement">=</span> <span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">2</span><span class="Statement">,</span> <span class="Constant">3</span><span class="Statement">;</span>
 
-<span class="Special">my</span> <span class="Identifier">%</span><span class="Identifier">h</span> <span class="Statement">=</span> <span class="Identifier">@</span><span class="Identifier">a</span> <span class="Constant">Z</span><span class="Statement">=&gt;</span> <span class="Identifier">@</span><span class="Identifier">b</span><span class="Statement">;</span> <span class="Comment"># (a =&gt; 1, b =&gt; 2, c =&gt; 3)</span>
+<span class="Comment"># `keys` - returns a list of keys of the hash.</span>
+<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">planets</span> <span class="Statement">=</span> <span class="Identifier">%</span><span class="Identifier">natural-satellites</span><span class="Statement">.</span><span class="Identifier">keys</span><span class="Statement">;</span>
+<span class="Identifier">say</span> <span class="Identifier">@</span><span class="Identifier">planets</span><span class="Statement">;</span> <span class="Comment"># (earth uranus nepture saturn venus mercury jupiter mars)</span>
 
-<span class="Comment"># Reduction Operators</span>
-<span class="Identifier">say</span> <span class="Statement">[+]</span> <span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">2</span><span class="Statement">,</span> <span class="Constant">3</span><span class="Statement">;</span> <span class="Comment"># 1 + 2 + 3 = 6</span>
+<span class="Comment"># `values` - returns a list of values of the hash.</span>
+<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">satellites</span> <span class="Statement">=</span> <span class="Identifier">%</span><span class="Identifier">natural-satellites</span><span class="Statement">.</span><span class="Identifier">values</span><span class="Statement">;</span>
+<span class="Identifier">say</span> <span class="Identifier">@</span><span class="Identifier">satellites</span><span class="Statement">;</span> <span class="Comment"># (1 27 14 62 0 0 79 2) </span>
 
-<span class="Comment"># XOR Operators (^^, xor, +^)</span>
-<span class="Identifier">say</span> <span class="Type">False</span> <span class="Statement">^^</span> <span class="Type">True</span><span class="Statement">;</span> <span class="Comment"># True</span>
-<span class="Identifier">say</span> <span class="Type">False</span> <span class="Statement">xor</span> <span class="Type">True</span><span class="Statement">;</span> <span class="Comment"># True; this has looser precedence</span>
-<span class="Identifier">say</span> <span class="Constant">1</span> <span class="Statement">+^</span> <span class="Constant">0</span><span class="Statement">;</span> <span class="Comment"># 1; integer XOR</span>
+<span class="Comment"># `kv` - returns a list of both keys and values.</span>
+<span class="Identifier">say</span> <span class="Identifier">%</span><span class="Identifier">natural-satellites</span><span class="Statement">.</span><span class="Identifier">kv</span><span class="Statement">;</span> <span class="Comment"># (earth 1 uranus 27 nepture 14 saturn 62 venus 0</span>
+                            <span class="Comment"># mercury 0 jupiter 79 mars 2)</span>
 
-<span class="Comment"># Range Operators</span>
-<span class="Identifier">print</span> <span class="Identifier">$</span><span class="Identifier">_</span> <span class="Statement">for</span> <span class="Constant">1</span><span class="Statement">..</span><span class="Constant">5</span><span class="Statement">;</span> <span class="Comment"># 12345</span>
-<span class="Identifier">print</span> <span class="Identifier">$</span><span class="Identifier">_</span> <span class="Statement">for</span> <span class="Constant">1</span><span class="Statement">^..</span><span class="Constant">5</span><span class="Statement">;</span> <span class="Comment"># 2345</span>
-<span class="Identifier">print</span> <span class="Identifier">$</span><span class="Identifier">_</span> <span class="Statement">for</span> <span class="Constant">1</span><span class="Statement">..^</span><span class="Constant">5</span><span class="Statement">;</span> <span class="Comment"># 1234</span>
-<span class="Identifier">print</span> <span class="Identifier">$</span><span class="Identifier">_</span> <span class="Statement">for</span> <span class="Constant">1</span><span class="Statement">^..^</span><span class="Constant">5</span><span class="Statement">;</span> <span class="Comment"># 234</span>
+<span class="Comment"># `pairs` - returns a list of pairs (key/value).</span>
+<span class="Identifier">say</span> <span class="Identifier">%</span><span class="Identifier">natural-satellites</span><span class="Statement">.</span><span class="Identifier">pairs</span><span class="Statement">;</span> <span class="Comment"># (earth =&gt; 1 uranus =&gt; 27 nepture =&gt; 14</span>
+                               <span class="Comment"># saturn =&gt; 62 venus =&gt; 0 mercury =&gt; 0</span>
+                               <span class="Comment"># jupiter =&gt; 79 mars =&gt; 2)</span>
 
-<span class="Comment"># Slurpee Arguments - Flattens Items into Argument List</span>
-<span class="Statement">sub</span> slurpee( <span class="Statement">|</span>args ){
-  <span class="Identifier">say</span> args<span class="Statement">.</span><span class="Identifier">perl</span>
-}
+<span class="Comment"># `antipairs` - returns a list of inverted pairs (value/key).</span>
+<span class="Identifier">say</span> <span class="Identifier">%</span><span class="Identifier">natural-satellites</span><span class="Statement">.</span>antipairs<span class="Statement">;</span> <span class="Comment"># (1 =&gt; earth 27 =&gt; uranus 14 =&gt; nepture</span>
+                                   <span class="Comment"># 62 =&gt; saturn 0 =&gt; venus 0 =&gt; mercury</span>
+                                   <span class="Comment"># 79 =&gt; jupiter 2 =&gt; mars)</span>
 
-slurpee(<span class="Special">&lt;</span><span class="Constant">a b c d</span><span class="Special">&gt;</span><span class="Statement">,</span> {<span class="Constant">e</span> <span class="Statement">=&gt;</span> <span class="Constant">3</span>}<span class="Statement">,</span> <span class="Special">'</span><span class="Constant">e</span><span class="Special">'</span> <span class="Statement">=&gt;</span> <span class="Special">'</span><span class="Constant">f</span><span class="Special">'</span> <span class="Statement">=&gt;</span> <span class="Constant">33</span>) <span class="Comment"># \((&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;), {:e(3)}, :e(:f(33)))</span>
+<span class="Comment"># `elems` - returns number of pairs in the hash.</span>
+<span class="Identifier">say</span> <span class="Identifier">%</span><span class="Identifier">natural-satellites</span><span class="Statement">.</span><span class="Identifier">elems</span><span class="Statement">;</span> <span class="Comment"># 8</span>
 
-<span class="Comment"># AND all of your OWN Operators (all variants: infix, circumfix, prefix, etc)</span>
+<span class="Comment">## Hash comphrehensions</span>
+<span class="Comment">##---------------------</span>
 
-<span class="Statement">sub</span> <span class="Identifier">postfix</span><span class="Statement">:</span><span class="Special">&lt;</span><span class="Constant">!</span><span class="Special">&gt;</span>(<span class="Type">Int</span> <span class="Identifier">$</span><span class="Identifier">x</span> <span class="PreProc">where</span> { <span class="Identifier">$</span><span class="Identifier">x</span> <span class="Statement">&gt;=</span> <span class="Constant">0</span> }) { <span class="Statement">[*]</span> <span class="Constant">1</span><span class="Statement">..</span><span class="Identifier">$</span><span class="Identifier">x</span> }<span class="Statement">;</span>
-<span class="Identifier">say</span> <span class="Constant">6</span><span class="Statement">!;</span> <span class="Comment"># 720</span>
+<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">numbers</span> <span class="Statement">=</span> <span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">2</span><span class="Statement">,</span> <span class="Constant">3</span><span class="Statement">,</span> <span class="Constant">4</span><span class="Statement">,</span> <span class="Constant">5</span><span class="Statement">;</span>
+<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">letters</span> <span class="Statement">=</span> <span class="Special">&lt;</span><span class="Constant">A B C D E</span><span class="Special">&gt;</span><span class="Statement">;</span>
+
+<span class="Comment"># Postfix form of for and blocks can be combined to make list comphrehensions.</span>
+<span class="Special">my</span> <span class="Identifier">%</span><span class="Identifier">square-nums</span> <span class="Statement">=</span> <span class="Statement">%</span>( {<span class="Identifier">$</span><span class="Identifier">_</span> <span class="Statement">=&gt;</span> <span class="Identifier">$</span><span class="Identifier">_</span><span class="Statement">**</span><span class="Constant">2</span>} <span class="Statement">for</span> <span class="Identifier">@</span><span class="Identifier">numbers</span> )<span class="Statement">;</span> <span class="Comment"># %() is an alternative way of</span>
+                                                   <span class="Comment"># creating a hash.</span>
+
+<span class="Identifier">say</span> <span class="Identifier">%</span><span class="Identifier">square-nums</span><span class="Statement">;</span>      <span class="Comment"># {1 =&gt; 1, 2 =&gt; 4, 3 =&gt; 9, 4 =&gt; 16, 5 =&gt; 25}</span>
+
+<span class="Comment"># Conditionals can be applied too.</span>
+
+<span class="Special">my</span> <span class="Identifier">%</span><span class="Identifier">square-even-nums</span> <span class="Statement">=</span> <span class="Statement">%</span>( {<span class="Identifier">$</span><span class="Identifier">_</span> <span class="Statement">=&gt;</span> <span class="Identifier">$</span><span class="Identifier">_</span><span class="Statement">**</span><span class="Constant">2</span>} <span class="Statement">if</span> <span class="Identifier">$</span><span class="Identifier">_</span> <span class="Statement">%%</span> <span class="Constant">2</span> <span class="Statement">for</span> <span class="Identifier">@</span><span class="Identifier">numbers</span> )<span class="Statement">;</span>
+<span class="Special">my</span> <span class="Identifier">%</span><span class="Identifier">square-even-nums</span> <span class="Statement">=</span> <span class="Statement">%</span>( {<span class="Identifier">$</span><span class="Identifier">_</span> <span class="Statement">=&gt;</span> <span class="Identifier">$</span><span class="Identifier">_</span><span class="Statement">**</span><span class="Constant">2</span>} <span class="Statement">if</span> <span class="Identifier">$</span><span class="Identifier">_</span> <span class="Statement">!%%</span> <span class="Constant">2</span> <span class="Statement">for</span> <span class="Identifier">@</span><span class="Identifier">numbers</span> )<span class="Statement">;</span>
+
+<span class="Identifier">say</span> <span class="Identifier">%</span><span class="Identifier">square-even-nums</span><span class="Statement">;</span> <span class="Comment"># {2 =&gt; 4, 4 =&gt; 16}</span>
+<span class="Identifier">say</span> <span class="Identifier">%</span><span class="Identifier">square-odd-nums</span><span class="Statement">;</span>  <span class="Comment"># {1 =&gt; 1, 3 =&gt; 9, 5 =&gt; 25}</span>
+
+<span class="Comment"># To obtain a one-to-correspondence, use the zip operator `Z`.</span>
+<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">letters-nums</span> <span class="Statement">=</span>  <span class="Statement">%</span>( {<span class="Identifier">$</span><span class="Identifier">_</span>[<span class="Constant">0</span>] <span class="Statement">=&gt;</span> <span class="Identifier">$</span><span class="Identifier">_</span>[<span class="Constant">1</span>]} <span class="Statement">for</span> <span class="Identifier">@</span><span class="Identifier">letters</span> <span class="Statement">Z</span> <span class="Identifier">@</span><span class="Identifier">numbers</span> )<span class="Statement">;</span>
+
+<span class="Identifier">say</span> <span class="Identifier">@</span><span class="Identifier">letters-nums</span><span class="Statement">;</span>     <span class="Comment"># {A =&gt; 1, B =&gt; 2, C =&gt; 3, D =&gt; 4, E =&gt; 5}</span>
+
+<span class="Comment"># Or using the flat function.</span>
+<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">letters-nums1</span> <span class="Statement">=</span> <span class="Statement">%</span>( flat <span class="Identifier">@</span><span class="Identifier">letters</span> <span class="Statement">Z</span> <span class="Identifier">@</span><span class="Identifier">numbers</span> )<span class="Statement">;</span>
+
+<span class="Identifier">say</span> <span class="Identifier">@</span><span class="Identifier">letters-nums1</span><span class="Statement">;</span>    <span class="Comment"># {A =&gt; 1, B =&gt; 2, C =&gt; 3, D =&gt; 4, E =&gt; 5}</span>
+
+
 </pre>
 
       </div>

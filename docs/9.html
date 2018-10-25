@@ -1,0 +1,122 @@
+<html>
+  <head>
+    <title>Rakudo Perl 6 By Example</title>
+    <meta name="keywords" content="perl6,rakudo,p6,example,examples,learning,start,tutorial">
+    <meta name="description" content="Learn Perl 6 By Example">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono|Open+Sans" rel="stylesheet"> 
+  </head>
+  <body>
+    <div id="everything">
+      <div id="title">
+        <a href="index.html"><img src="rakudo.png"> Rakudo Perl 6 By Example</a>
+      </div>
+      <div id="github">
+        <a href="https://github.com/ijneb/p6byexample">View me on<img alt="GitHub" src="github.svg"></a>
+      </div>
+      <div id="nav">
+        <h1>Examples</h1>
+        <ul>
+            <li><a href="1.html">10.classes</a></li>
+            <li><a href="1.html">1.hello_world</a></li>
+            <li><a href="2.html">2.variables</a></li>
+            <li><a href="3.html">3.types</a></li>
+            <li><a href="4.html">4.conditions</a></li>
+            <li><a href="5.html">5.looping</a></li>
+            <li><a href="6.html">6.subroutines</a></li>
+            <li><a href="7.html">7.arrays</a></li>
+            <li><a href="8.html">8.hashes</a></li>
+            <li><a href="9.html">9.operators</a></li>
+        </ul>
+      </div>
+      <div id="content">
+        
+<pre id='vimCodeElement'>
+<span class="Comment"># Besides the regular arithmetic operators, here are some useful</span>
+<span class="Comment"># Perl 6 Operators!</span>
+
+<span class="Comment"># String concatenation (~) &amp; string repetition (x)</span>
+<span class="Identifier">say</span> <span class="Special">'</span><span class="Constant">w</span><span class="Special">'</span> <span class="Statement">~</span> <span class="Special">'</span><span class="Constant">o</span><span class="Special">'</span><span class="Statement">;</span> <span class="Comment"># wo</span>
+<span class="Identifier">say</span> <span class="Special">'</span><span class="Constant">wo</span><span class="Special">'</span> <span class="Statement">x</span> <span class="Constant">3</span><span class="Statement">;</span>  <span class="Comment"># wowowo</span>
+
+<span class="Comment"># List repetition (xx)</span>
+<span class="Identifier">say</span> [<span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">2</span>] <span class="Statement">xx</span> <span class="Constant">2</span><span class="Statement">;</span> <span class="Comment"># ([1 2] [1 2])</span>
+
+<span class="Comment"># Greatest common divisor(gcd) &amp; least common multiple (lcm)</span>
+<span class="Identifier">say</span> <span class="Constant">27</span> gcd <span class="Constant">18</span><span class="Statement">;</span> <span class="Comment"># 9</span>
+<span class="Identifier">say</span> <span class="Constant">35</span> lcm <span class="Constant">10</span><span class="Statement">;</span> <span class="Comment"># 10</span>
+
+<span class="Comment"># Perl 6 has full unicode support. Here are some notable versions of</span>
+<span class="Comment"># Unicode in Perl 6 operators:</span>
+
+<span class="Identifier">say</span> <span class="Constant">5</span> ÷ <span class="Constant">2</span><span class="Statement">;</span>  <span class="Comment"># 2.5</span>
+<span class="Identifier">say</span> <span class="Constant">5</span> <span class="Statement">/</span> <span class="Constant">2</span><span class="Statement">;</span>
+
+<span class="Identifier">say</span> <span class="Constant">5</span> × <span class="Constant">2</span><span class="Statement">;</span>  <span class="Comment"># 10</span>
+<span class="Identifier">say</span> <span class="Constant">5</span> <span class="Statement">*</span> <span class="Constant">2</span><span class="Statement">;</span>
+
+<span class="Identifier">say</span> <span class="Constant">5</span> ≤ <span class="Constant">2</span><span class="Statement">;</span>  <span class="Comment"># False</span>
+<span class="Identifier">say</span> <span class="Constant">5</span> <span class="Statement">&lt;=</span> <span class="Constant">2</span><span class="Statement">;</span>
+
+<span class="Identifier">say</span> <span class="Constant">5</span>²<span class="Statement">;</span>     <span class="Comment"># 25</span>
+<span class="Identifier">say</span> <span class="Constant">5</span> <span class="Statement">**</span> <span class="Constant">2</span><span class="Statement">;</span>
+
+<span class="Identifier">say</span> (<span class="Constant">1</span>) ∈ (<span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">2</span>)<span class="Statement">;</span> <span class="Comment"># True</span>
+<span class="Identifier">say</span> (<span class="Constant">1</span>) (elem) (<span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">2</span>)<span class="Statement">;</span>
+
+<span class="Identifier">say</span> ∅ ⊆ (<span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">2</span>)<span class="Statement">;</span>   <span class="Comment"># True</span>
+<span class="Identifier">say</span> () (<span class="Statement">&lt;=</span>) (<span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">2</span>)<span class="Statement">;</span>
+
+<span class="Comment"># Alongside tons more (e.g. ∉ ∋ ∌ ⊂ ⊄ ⊃ ⊅ ⊈ ⊇ ⊉ ≼ ≽ o ∘ ∩ ⊍ ⊖ ≠)</span>
+
+<span class="Comment"># Zip operator (Z) and quote-words (&lt;&gt;)</span>
+<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">z</span> <span class="Statement">=</span> <span class="Special">&lt;</span><span class="Constant">a b c</span><span class="Special">&gt;</span> <span class="Statement">Z</span> (<span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">2</span><span class="Statement">,</span> <span class="Constant">3</span>)<span class="Statement">;</span> <span class="Comment"># ((a 1) (b 2) (c 3))</span>
+
+<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">a</span> <span class="Statement">=</span> <span class="Special">'</span><span class="Constant">a</span><span class="Special">'</span><span class="Statement">,</span> <span class="Special">'</span><span class="Constant">b</span><span class="Special">'</span><span class="Statement">,</span> <span class="Special">'</span><span class="Constant">c</span><span class="Special">'</span><span class="Statement">;</span>
+<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">b</span> <span class="Statement">=</span> <span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">2</span><span class="Statement">,</span> <span class="Constant">3</span><span class="Statement">;</span>
+
+<span class="Special">my</span> <span class="Identifier">%</span><span class="Identifier">h</span> <span class="Statement">=</span> <span class="Identifier">@</span><span class="Identifier">a</span> <span class="Constant">Z</span><span class="Statement">=&gt;</span> <span class="Identifier">@</span><span class="Identifier">b</span><span class="Statement">;</span> <span class="Comment"># (a =&gt; 1, b =&gt; 2, c =&gt; 3)</span>
+<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">c</span> <span class="Statement">=</span> <span class="Identifier">@</span><span class="Identifier">a</span> <span class="Statement">Z~</span> <span class="Identifier">@</span><span class="Identifier">b</span><span class="Statement">;</span>  <span class="Comment"># (1a 2b 3c)</span>
+
+<span class="Comment"># Cross operator (X)</span>
+<span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">x</span> <span class="Statement">=</span> (<span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">2</span>) <span class="Statement">X</span> <span class="Special">&lt;</span><span class="Constant">a b</span><span class="Special">&gt;</span><span class="Statement">;</span>
+<span class="Identifier">say</span> <span class="Identifier">@</span><span class="Identifier">x</span><span class="Statement">;</span> <span class="Comment"># ((1 a) (1 b) (2 a) (2 b))</span>
+
+<span class="Comment"># Reduction operator ([])</span>
+<span class="Identifier">say</span> <span class="Statement">[+]</span> <span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">2</span><span class="Statement">,</span> <span class="Constant">3</span><span class="Statement">;</span> <span class="Comment"># 1 + 2 + 3 = 6</span>
+<span class="Identifier">say</span> <span class="Statement">[*]</span> <span class="Constant">1</span><span class="Statement">..</span><span class="Constant">3</span><span class="Statement">;</span>    <span class="Comment"># 1 * 2 * 3 = 6. That sweet factorial easier than ever!</span>
+
+<span class="Comment"># XOR Operators (^^, xor, +^)</span>
+<span class="Identifier">say</span> <span class="Type">False</span> <span class="Statement">^^</span> <span class="Type">True</span><span class="Statement">;</span>      <span class="Comment"># True</span>
+<span class="Identifier">say</span> <span class="Type">False</span> <span class="Statement">xor</span> <span class="Type">True</span><span class="Statement">;</span>     <span class="Comment"># True; this has looser precedence</span>
+<span class="Identifier">say</span> <span class="Constant">1</span> <span class="Statement">+^</span> <span class="Constant">0</span><span class="Statement">;</span>             <span class="Comment"># 1; integer XOR</span>
+
+<span class="Comment"># Range operator</span>
+<span class="Identifier">print</span> <span class="Identifier">$</span><span class="Identifier">_</span> <span class="Statement">for</span> <span class="Constant">1</span><span class="Statement">..</span><span class="Constant">5</span><span class="Statement">;</span>   <span class="Comment"># 12345</span>
+<span class="Identifier">print</span> <span class="Identifier">$</span><span class="Identifier">_</span> <span class="Statement">for</span> <span class="Constant">1</span><span class="Statement">^..</span><span class="Constant">5</span><span class="Statement">;</span>  <span class="Comment"># 2345</span>
+<span class="Identifier">print</span> <span class="Identifier">$</span><span class="Identifier">_</span> <span class="Statement">for</span> <span class="Constant">1</span><span class="Statement">..^</span><span class="Constant">5</span><span class="Statement">;</span>  <span class="Comment"># 1234</span>
+<span class="Identifier">print</span> <span class="Identifier">$</span><span class="Identifier">_</span> <span class="Statement">for</span> <span class="Constant">1</span><span class="Statement">^..^</span><span class="Constant">5</span><span class="Statement">;</span> <span class="Comment"># 234</span>
+
+<span class="Comment"># Sequence operator</span>
+<span class="Identifier">print</span> <span class="Identifier">$</span><span class="Identifier">_</span> <span class="Statement">for</span> <span class="Constant">1</span><span class="Statement">...</span><span class="Constant">5</span><span class="Statement">;</span>  <span class="Comment"># 12345</span>
+<span class="Identifier">print</span> <span class="Identifier">$</span><span class="Identifier">_</span> <span class="Statement">for</span> <span class="Constant">5</span><span class="Statement">...</span><span class="Constant">1</span><span class="Statement">;</span>  <span class="Comment"># 54321</span>
+
+<span class="Comment"># And all of your OWN Operators (all variants: infix, postfix, circumfix, prefix, etc)</span>
+
+<span class="Comment"># factorial operator</span>
+<span class="Statement">sub</span> <span class="Identifier">postfix</span><span class="Statement">:</span><span class="Special">&lt;</span><span class="Constant">!</span><span class="Special">&gt;</span>(<span class="Type">Int</span> <span class="Identifier">$</span><span class="Identifier">x</span> <span class="PreProc">where</span> { <span class="Identifier">$</span><span class="Identifier">x</span> <span class="Statement">&gt;=</span> <span class="Constant">0</span> }) { <span class="Statement">[*]</span> <span class="Constant">1</span><span class="Statement">..</span><span class="Identifier">$</span><span class="Identifier">x</span> }<span class="Statement">;</span>
+<span class="Identifier">say</span> <span class="Constant">6</span><span class="Statement">!;</span> <span class="Comment"># 720</span>
+
+<span class="Comment"># value-swapping operator</span>
+<span class="Statement">multi</span> <span class="Statement">sub</span> <span class="Identifier">infix</span><span class="Statement">:</span><span class="Special">&lt;</span><span class="Constant">:=:</span><span class="Special">&gt;</span> (<span class="Identifier">$</span><span class="Identifier">val1</span> <span class="PreProc">is</span> <span class="Special">rw</span><span class="Statement">,</span> <span class="Identifier">$</span><span class="Identifier">val2</span> <span class="PreProc">is</span> <span class="Special">rw</span>) { (<span class="Identifier">$</span><span class="Identifier">val1</span><span class="Statement">,</span> <span class="Identifier">$</span><span class="Identifier">val2</span>) <span class="Statement">.=</span> <span class="Identifier">reverse</span> }<span class="Statement">;</span>
+<span class="Special">my</span> (<span class="Identifier">$</span><span class="Identifier">x</span><span class="Statement">,</span> <span class="Identifier">$</span><span class="Identifier">y</span>) <span class="Statement">=</span> (<span class="Constant">0</span><span class="Statement">,</span> <span class="Constant">9</span>)<span class="Statement">;</span>
+<span class="Identifier">$</span><span class="Identifier">x</span> <span class="Statement">:=:</span> <span class="Identifier">$</span><span class="Identifier">y</span><span class="Statement">;</span>
+<span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">x</span><span class="Statement">,</span> <span class="Identifier">$</span><span class="Identifier">y</span><span class="Statement">;</span> <span class="Comment"># 9 0</span>
+
+</pre>
+
+      </div>
+    </div>
+  </body>
+</html>

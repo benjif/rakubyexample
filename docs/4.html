@@ -18,34 +18,95 @@
       <div id="nav">
         <h1>Examples</h1>
         <ul>
+            <li><a href="1.html">10.classes</a></li>
             <li><a href="1.html">1.hello_world</a></li>
             <li><a href="2.html">2.variables</a></li>
             <li><a href="3.html">3.types</a></li>
             <li><a href="4.html">4.conditions</a></li>
             <li><a href="5.html">5.looping</a></li>
             <li><a href="6.html">6.subroutines</a></li>
-            <li><a href="7.html">7.classes</a></li>
-            <li><a href="8.html">8.operators</a></li>
+            <li><a href="7.html">7.arrays</a></li>
+            <li><a href="8.html">8.hashes</a></li>
+            <li><a href="9.html">9.operators</a></li>
         </ul>
       </div>
       <div id="content">
         
 <pre id='vimCodeElement'>
-<span class="Statement">if</span> <span class="Type">True</span> {
-  <span class="Identifier">say</span> <span class="Special">'</span><span class="Constant">This will happen!</span><span class="Special">'</span><span class="Statement">;</span>
-}
+<span class="Comment">## if, else, elsif, unless, etc. - testing for truthness</span>
+<span class="Comment">#------------------------------</span>
 
-<span class="Identifier">say</span> <span class="Special">'</span><span class="Constant">This will happen!</span><span class="Special">'</span> <span class="Statement">if</span> <span class="Type">True</span><span class="Statement">;</span>
-<span class="Identifier">say</span> <span class="Special">'</span><span class="Constant">This will happen!</span><span class="Special">'</span> <span class="Statement">unless</span> <span class="Type">False</span><span class="Statement">;</span> <span class="Comment"># Unless is the same as `if !(condition) { }`</span>
+<span class="Comment"># if</span>
+<span class="Statement">if</span> <span class="Type">True</span> { <span class="Identifier">say</span> <span class="Special">'</span><span class="Constant">This will happen!</span><span class="Special">'</span><span class="Statement">;</span> }
+<span class="Identifier">say</span> <span class="Special">'</span><span class="Constant">This will happen!</span><span class="Special">'</span> <span class="Statement">if</span> <span class="Type">True</span><span class="Statement">;</span> <span class="Comment"># statement modifier syntax</span>
 
-<span class="Comment"># Numerical Comparisons (==, !=, &lt;=, &gt;=, etc.)</span>
-<span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Constant">It's greater!</span><span class="Special">&quot;</span> <span class="Statement">if</span> <span class="Constant">2</span> <span class="Statement">&gt;</span> <span class="Constant">1</span><span class="Statement">;</span>
+<span class="Comment"># if/else</span>
+<span class="Statement">if</span> <span class="Type">False</span> { <span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Constant">This won't happen!</span><span class="Special">&quot;</span><span class="Statement">;</span>       }
+<span class="Statement">else</span>     { <span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Constant">This will happen though!</span><span class="Special">&quot;</span><span class="Statement">;</span> }
 
-<span class="Comment"># String Comparisons (eq, ne, gt, ge, lt, le, etc.)</span>
-<span class="Special">my</span> <span class="Identifier">$</span><span class="Identifier">name</span> <span class="Statement">=</span> <span class="Special">'</span><span class="Constant">Stanley</span><span class="Special">'</span><span class="Statement">;</span>
-<span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">name</span> <span class="Statement">eq</span> <span class="Special">'</span><span class="Constant">Stanley</span><span class="Special">'</span> <span class="Statement">??</span> <span class="Special">&quot;</span><span class="Constant">It's Stanley!</span><span class="Special">&quot;</span> <span class="Statement">!!</span> <span class="Special">'</span><span class="Constant">Not Stanley</span><span class="Special">'</span><span class="Statement">;</span> <span class="Comment"># Ternary</span>
+<span class="Comment"># if/elsif/else</span>
+<span class="Statement">if</span> <span class="Type">False</span>   { <span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Constant">This won't happen!</span><span class="Special">&quot;</span><span class="Statement">;</span>         }
+<span class="Statement">elsif</span> <span class="Type">True</span> { <span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Constant">This will happen though!</span><span class="Special">&quot;</span><span class="Statement">;</span>   }
+<span class="Statement">else</span>       {   <span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Constant">This could've happened!</span><span class="Special">&quot;</span><span class="Statement">;</span>  }
 
-<span class="Comment"># Smart Matching (~~)</span>
+<span class="Comment"># unless - equivalent to `if !(condition) {}`</span>
+<span class="Statement">unless</span> <span class="Type">False</span> { <span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Constant">This will certainly happen</span><span class="Special">&quot;</span><span class="Statement">;</span> }
+<span class="Identifier">say</span> <span class="Special">'</span><span class="Constant">This will happen!</span><span class="Special">'</span> <span class="Statement">unless</span> <span class="Type">False</span><span class="Statement">;</span> <span class="Comment"># statement modifier syntax</span>
+
+<span class="Comment">## with, orwith, without - testing for definedness</span>
+<span class="Comment">#-----------------------</span>
+
+<span class="Comment"># with - unlike `if` that tests for truthness, `with` tests for definedness</span>
+<span class="Special">my</span> <span class="Identifier">$</span><span class="Identifier">falsey</span> <span class="Statement">=</span> <span class="Special">&quot;&quot;</span><span class="Statement">;</span>
+
+with <span class="Identifier">$</span><span class="Identifier">falsey</span> { <span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Constant">This will print</span><span class="Special">&quot;</span><span class="Statement">;</span>  }
+<span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Constant">This will print</span><span class="Special">&quot;</span> with <span class="Identifier">$</span><span class="Identifier">falsey</span><span class="Statement">;</span> <span class="Comment"># statement modifier form</span>
+
+<span class="Comment"># orwith - similar to `elsif` but for definedness</span>
+with Nil { <span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Constant">This won't print</span><span class="Special">&quot;</span><span class="Statement">;</span> }
+orwith <span class="Constant">1</span> { <span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Constant">This will print</span><span class="Special">&quot;</span><span class="Statement">;</span>  }
+
+<span class="Comment"># without - similar to `unless` but for definedness</span>
+<span class="Special">my</span> <span class="Identifier">$</span><span class="Identifier">answer</span> <span class="Statement">=</span> <span class="Type">Any</span><span class="Statement">;</span>
+without <span class="Identifier">$</span><span class="Identifier">answer</span> { <span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Constant">This will print!</span><span class="Special">&quot;</span><span class="Statement">;</span> }
+<span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Constant">This will print even if </span><span class="Special">&quot;</span> without <span class="Identifier">$</span><span class="Identifier">answer</span><span class="Statement">;</span> <span class="Comment"># statement modifier form</span>
+
+<span class="Comment">## Numerical comparisons (==, !=, &lt;=, &gt;=, etc.)</span>
+<span class="Comment">##----------------------</span>
+<span class="Special">my</span> (<span class="Identifier">$</span><span class="Identifier">a</span><span class="Statement">,</span> <span class="Identifier">$</span><span class="Identifier">b</span><span class="Statement">,</span> <span class="Identifier">$</span><span class="Identifier">c</span>) <span class="Statement">=</span> (<span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">2</span><span class="Statement">,</span> <span class="Constant">1</span>)<span class="Statement">;</span>
+
+<span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Identifier">$</span><span class="Identifier">a</span><span class="Constant"> is less than </span><span class="Identifier">$</span><span class="Identifier">b</span><span class="Special">&quot;</span>                   <span class="Statement">if</span> <span class="Identifier">$</span><span class="Identifier">a</span> <span class="Statement">&lt;</span> <span class="Identifier">$</span><span class="Identifier">b</span><span class="Statement">;</span>
+<span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Identifier">$</span><span class="Identifier">a</span><span class="Constant"> is less than or equal to </span><span class="Identifier">$</span><span class="Identifier">b</span><span class="Special">&quot;</span>       <span class="Statement">if</span> <span class="Identifier">$</span><span class="Identifier">a</span> <span class="Statement">&lt;=</span> <span class="Identifier">$</span><span class="Identifier">b</span><span class="Statement">;</span>
+<span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Identifier">$</span><span class="Identifier">b</span><span class="Constant"> is greater than </span><span class="Identifier">$</span><span class="Identifier">a</span><span class="Special">&quot;</span>                <span class="Statement">if</span> <span class="Identifier">$</span><span class="Identifier">b</span> <span class="Statement">&gt;</span> <span class="Identifier">$</span><span class="Identifier">a</span><span class="Statement">;</span>
+<span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Identifier">$</span><span class="Identifier">b</span><span class="Constant"> is greater than or equal to </span><span class="Identifier">$</span><span class="Identifier">a</span><span class="Special">&quot;</span>    <span class="Statement">if</span> <span class="Identifier">$</span><span class="Identifier">b</span> <span class="Statement">&gt;=</span> <span class="Identifier">$</span><span class="Identifier">a</span><span class="Statement">;</span>
+<span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Identifier">$</span><span class="Identifier">a</span><span class="Constant"> is equal to </span><span class="Identifier">$</span><span class="Identifier">c</span><span class="Special">&quot;</span>                    <span class="Statement">if</span> <span class="Identifier">$</span><span class="Identifier">a</span> <span class="Statement">==</span> <span class="Identifier">$</span><span class="Identifier">c</span><span class="Statement">;</span>
+<span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Identifier">$</span><span class="Identifier">b</span><span class="Constant"> is not equal to </span><span class="Identifier">$</span><span class="Identifier">c</span><span class="Special">&quot;</span>                <span class="Statement">if</span> <span class="Identifier">$</span><span class="Identifier">b</span> <span class="Statement">!=</span> <span class="Identifier">$</span><span class="Identifier">c</span><span class="Statement">;</span>
+
+<span class="Comment"># chained comparison</span>
+<span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Identifier">$</span><span class="Identifier">a</span><span class="Constant"> is greater than 0 and less than 2</span><span class="Special">&quot;</span> <span class="Statement">if</span> <span class="Constant">0</span> <span class="Statement">&lt;</span> <span class="Identifier">$</span><span class="Identifier">a</span> <span class="Statement">&lt;</span> <span class="Identifier">$</span><span class="Identifier">b</span><span class="Statement">;</span>
+
+<span class="Comment">## String comparisons (eq, ne, gt, ge, lt, le, etc.)</span>
+<span class="Comment">##-------------------</span>
+<span class="Special">my</span> (<span class="Identifier">$</span><span class="Identifier">n1</span><span class="Statement">,</span> <span class="Identifier">$</span><span class="Identifier">n2</span><span class="Statement">,</span> <span class="Identifier">$</span><span class="Identifier">n3</span>) <span class="Statement">=</span> (<span class="Special">'</span><span class="Constant">Sergey</span><span class="Special">'</span><span class="Statement">,</span> <span class="Special">'</span><span class="Constant">Stanley</span><span class="Special">'</span><span class="Statement">,</span> <span class="Special">'</span><span class="Constant">Marcus</span><span class="Special">'</span>)<span class="Statement">;</span>
+
+<span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Identifier">$</span><span class="Identifier">n1</span><span class="Constant"> comes before </span><span class="Identifier">$</span><span class="Identifier">n2</span><span class="Special">&quot;</span>     <span class="Statement">if</span> <span class="Identifier">$</span><span class="Identifier">n1</span> <span class="Statement">lt</span> <span class="Identifier">$</span><span class="Identifier">n2</span><span class="Statement">;</span>
+<span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Identifier">$</span><span class="Identifier">n2</span><span class="Constant"> comes after </span><span class="Identifier">$</span><span class="Identifier">n1</span><span class="Special">&quot;</span>      <span class="Statement">if</span> <span class="Identifier">$</span><span class="Identifier">n2</span> <span class="Statement">gt</span> <span class="Identifier">$</span><span class="Identifier">n1</span><span class="Statement">;</span>
+<span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Identifier">$</span><span class="Identifier">n2</span><span class="Constant"> is not equal to </span><span class="Identifier">$</span><span class="Identifier">n1</span><span class="Special">&quot;</span>  <span class="Statement">if</span> <span class="Identifier">$</span><span class="Identifier">n2</span> <span class="Statement">ne</span> <span class="Identifier">$</span><span class="Identifier">n1</span><span class="Statement">;</span>
+
+<span class="Comment"># chained comparison</span>
+<span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Identifier">$</span><span class="Identifier">n1</span><span class="Constant"> comes after </span><span class="Identifier">$</span><span class="Identifier">n3</span><span class="Constant"> and before </span><span class="Identifier">$</span><span class="Identifier">n2</span><span class="Special">&quot;</span> <span class="Statement">if</span> <span class="Identifier">$</span><span class="Identifier">n3</span> <span class="Statement">lt</span> <span class="Identifier">$</span><span class="Identifier">n1</span> <span class="Statement">lt</span> <span class="Identifier">$</span><span class="Identifier">n2</span><span class="Statement">;</span>
+
+<span class="Comment">## Ternary operator (condition ?? opt1 !! opt2)</span>
+<span class="Comment">##-----------------</span>
+<span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">n2</span> <span class="Statement">eq</span> <span class="Special">'</span><span class="Constant">Stanley</span><span class="Special">'</span> <span class="Statement">??</span> <span class="Special">&quot;</span><span class="Constant">It's Stanley!</span><span class="Special">&quot;</span> <span class="Statement">!!</span> <span class="Special">'</span><span class="Constant">Not Stanley</span><span class="Special">'</span><span class="Statement">;</span>
+
+<span class="Special">my</span> <span class="Identifier">$</span><span class="Identifier">n</span> <span class="Statement">=</span> <span class="Constant">7</span><span class="Statement">;</span>
+<span class="Special">my</span> <span class="Identifier">$</span><span class="Identifier">p</span> <span class="Statement">=</span> <span class="Identifier">$</span><span class="Identifier">n</span><span class="Statement">.</span><span class="Identifier">is</span><span class="Statement">-</span>prime <span class="Statement">??</span> <span class="Special">&quot;</span><span class="Constant">Prime</span><span class="Special">&quot;</span> <span class="Statement">!!</span> <span class="Special">&quot;</span><span class="Constant">Composite</span><span class="Special">&quot;</span><span class="Statement">;</span>
+
+<span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">p</span><span class="Statement">;</span>
+
+<span class="Comment">## Smart matching (~~)</span>
+<span class="Comment">##-------------------</span>
 <span class="Identifier">say</span> <span class="Special">'</span><span class="Constant">Hello Stanley</span><span class="Special">'</span> <span class="Statement">~~</span> <span class="Type">Str</span><span class="Statement">;</span>  <span class="Comment"># Type Comparisons</span>
 <span class="Identifier">say</span> so <span class="Special">'</span><span class="Constant">Hello Bob</span><span class="Special">'</span> <span class="Statement">~~</span> <span class="Special">/</span><span class="Constant">Bob</span><span class="Special">/</span><span class="Statement">;</span> <span class="Comment"># Regular Expressions Matching</span>
 

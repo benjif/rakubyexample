@@ -18,31 +18,52 @@
       <div id="nav">
         <h1>Examples</h1>
         <ul>
+            <li><a href="1.html">10.classes</a></li>
             <li><a href="1.html">1.hello_world</a></li>
             <li><a href="2.html">2.variables</a></li>
             <li><a href="3.html">3.types</a></li>
             <li><a href="4.html">4.conditions</a></li>
             <li><a href="5.html">5.looping</a></li>
             <li><a href="6.html">6.subroutines</a></li>
-            <li><a href="7.html">7.classes</a></li>
-            <li><a href="8.html">8.operators</a></li>
+            <li><a href="7.html">7.arrays</a></li>
+            <li><a href="8.html">8.hashes</a></li>
+            <li><a href="9.html">9.operators</a></li>
         </ul>
       </div>
       <div id="content">
         
 <pre id='vimCodeElement'>
-<span class="Comment"># Hello World in Perl 6! This is a single-lined comment</span>
+<span class="Comment">## Comments</span>
+<span class="Comment">#----------</span>
 
-<span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Constant">Hello World</span><span class="Special">&quot;</span><span class="Statement">;</span>
+<span class="Comment"># Comments start with a # and ignored by the Perl 6 compiler.</span>
+<span class="Comment"># By the way, this is a single-line comment.</span>
 
-<span class="Special">&quot;</span><span class="Constant">Hello World</span><span class="Special">&quot;</span><span class="Statement">.</span><span class="Identifier">say</span><span class="Statement">;</span>
+<span class="Comment">#`{</span>
+    This <span class="PreProc">is</span> a multi-line comment which <span class="PreProc">is</span> achieved <span class="Identifier">by</span> using <span class="Comment">#` followed</span>
+    <span class="Identifier">by</span> matching bracketing characters such <span class="PreProc">as</span> []<span class="Statement">,</span> ()<span class="Statement">,</span> {}<span class="Statement">,</span> etc<span class="Statement">.</span>
+}
+
+<span class="Comment">## Printing to the standard output:</span>
+
+<span class="Comment"># say - prints its arguments to the standard output, followed by a newline.</span>
+<span class="Comment">#       It calls the .gist method on its arguments.</span>
+
+<span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Constant">Hello World</span><span class="Special">&quot;</span><span class="Statement">;</span>  <span class="Comment"># function invocation</span>
 
 <span class="Identifier">say</span>(<span class="Special">&quot;</span><span class="Constant">Hello World</span><span class="Special">&quot;</span>)<span class="Statement">;</span>
 
-<span class="Statement">say:</span> <span class="Special">&quot;</span><span class="Constant">Hello World</span><span class="Special">&quot;</span><span class="Statement">;</span> <span class="Comment"># All of these work</span>
+<span class="Special">&quot;</span><span class="Constant">Hello World</span><span class="Special">&quot;</span><span class="Statement">.</span><span class="Identifier">say</span><span class="Statement">;</span>  <span class="Comment"># method invocation</span>
 
-<span class="Comment"># Print is used when you don't want a newline appended automatically</span>
+<span class="Comment"># print - prints its arguments to the standard output, without appending</span>
+<span class="Comment">#         a newline.</span>
+
 <span class="Identifier">print</span> <span class="Special">&quot;</span><span class="Constant">Hello World</span><span class="Special">\n</span><span class="Special">&quot;</span><span class="Statement">;</span>
+
+<span class="Comment"># put - works like say but doesn't call the .gist method on its arguments.</span>
+
+put <span class="Special">&quot;</span><span class="Constant">Hello World</span><span class="Special">&quot;</span><span class="Statement">;</span>
+
 </pre>
 
       </div>

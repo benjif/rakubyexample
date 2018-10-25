@@ -18,56 +18,80 @@
       <div id="nav">
         <h1>Examples</h1>
         <ul>
+            <li><a href="1.html">10.classes</a></li>
             <li><a href="1.html">1.hello_world</a></li>
             <li><a href="2.html">2.variables</a></li>
             <li><a href="3.html">3.types</a></li>
             <li><a href="4.html">4.conditions</a></li>
             <li><a href="5.html">5.looping</a></li>
             <li><a href="6.html">6.subroutines</a></li>
-            <li><a href="7.html">7.classes</a></li>
-            <li><a href="8.html">8.operators</a></li>
+            <li><a href="7.html">7.arrays</a></li>
+            <li><a href="8.html">8.hashes</a></li>
+            <li><a href="9.html">9.operators</a></li>
         </ul>
       </div>
       <div id="content">
         
 <pre id='vimCodeElement'>
-<span class="Comment"># For loops</span>
+<span class="Comment">## for loops - loop over a collection of things</span>
+
+<span class="Comment"># arrays/lists/ranges/sequences</span>
 <span class="Special">my</span> <span class="Identifier">@</span><span class="Identifier">a</span> <span class="Statement">=</span> <span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">2</span><span class="Statement">,</span> <span class="Constant">3</span><span class="Statement">;</span>
 
-<span class="Statement">for</span> <span class="Identifier">@</span><span class="Identifier">a</span> <span class="Statement">-&gt;</span> <span class="Identifier">$</span><span class="Identifier">i</span> {
-  <span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">i</span><span class="Statement">;</span>
-}
+<span class="Statement">for</span> <span class="Identifier">@</span><span class="Identifier">a</span> { <span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">_</span><span class="Statement">;</span> }             <span class="Comment"># using the topic variable $_</span>
 
-<span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">_</span> <span class="Statement">for</span> <span class="Identifier">@</span><span class="Identifier">a</span><span class="Statement">;</span>
+<span class="Statement">for</span> <span class="Identifier">@</span><span class="Identifier">a</span> <span class="Statement">-&gt;</span> <span class="Identifier">$</span><span class="Identifier">i</span> { <span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">i</span><span class="Statement">;</span> }       <span class="Comment"># using a pointy block for explicit variable</span>
 
-<span class="Special">my</span> <span class="Identifier">%</span><span class="Identifier">h</span> <span class="Statement">=</span> <span class="Constant">a</span> <span class="Statement">=&gt;</span> <span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">b</span> <span class="Statement">=&gt;</span> <span class="Constant">2</span><span class="Statement">;</span>
+<span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">_</span> <span class="Statement">for</span> <span class="Identifier">@</span><span class="Identifier">a</span><span class="Statement">;</span>                 <span class="Comment"># using the statement modifier form</span>
 
-<span class="Comment"># `.kv` returns key and value</span>
-<span class="Statement">for</span> <span class="Identifier">%</span><span class="Identifier">h</span><span class="Statement">.</span><span class="Identifier">kv</span> <span class="Statement">-&gt;</span> <span class="Identifier">$</span><span class="Identifier">k</span><span class="Statement">,</span> <span class="Identifier">$</span><span class="Identifier">v</span> { <span class="Comment"># Looping through hashes</span>
-  <span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Identifier">$</span><span class="Identifier">k</span><span class="Constant"> : </span><span class="Identifier">$</span><span class="Identifier">v</span><span class="Special">&quot;</span><span class="Statement">;</span>
-}
+<span class="Statement">for</span> <span class="Constant">0</span><span class="Statement">..</span><span class="Constant">3</span> <span class="Statement">-&gt;</span> <span class="Identifier">$</span><span class="Identifier">i</span> { <span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">i</span><span class="Statement">;</span> }     <span class="Comment"># looping over a range (both extremes are included)</span>
 
-<span class="Comment"># C style loops</span>
+<span class="Statement">for</span> <span class="Constant">0</span><span class="Statement">...</span><span class="Constant">3</span> <span class="Statement">-&gt;</span> <span class="Identifier">$</span><span class="Identifier">i</span> { <span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">i</span><span class="Statement">;</span> }    <span class="Comment"># looping over a sequence</span>
+
+<span class="Statement">for</span> <span class="Constant">3</span><span class="Statement">...</span><span class="Constant">0</span> <span class="Statement">-&gt;</span> <span class="Identifier">$</span><span class="Identifier">i</span> { <span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">i</span><span class="Statement">;</span> }    <span class="Comment"># unlike the range operator, the sequence operator</span>
+                               <span class="Comment"># can count down</span>
+
+<span class="Comment"># hashes</span>
+<span class="Special">my</span> <span class="Identifier">%</span><span class="Identifier">h</span> <span class="Statement">=</span> <span class="Constant">a</span> <span class="Statement">=&gt;</span> <span class="Constant">1</span><span class="Statement">,</span> <span class="Constant">b</span> <span class="Statement">=&gt;</span> <span class="Constant">2</span><span class="Statement">,</span> <span class="Constant">c</span> <span class="Statement">=&gt;</span> <span class="Constant">3</span><span class="Statement">;</span>
+
+<span class="Statement">for</span> <span class="Identifier">%</span><span class="Identifier">h</span><span class="Statement">.</span><span class="Identifier">kv</span> <span class="Statement">-&gt;</span> <span class="Identifier">$</span><span class="Identifier">k</span><span class="Statement">,</span> <span class="Identifier">$</span><span class="Identifier">v</span> { <span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Identifier">$</span><span class="Identifier">k</span><span class="Constant"> : </span><span class="Identifier">$</span><span class="Identifier">v</span><span class="Special">&quot;</span><span class="Statement">;</span>     }  <span class="Comment"># looping over keys and values</span>
+
+<span class="Statement">for</span> <span class="Identifier">%</span><span class="Identifier">h</span><span class="Statement">.</span><span class="Identifier">keys</span> <span class="Statement">-&gt;</span> <span class="Identifier">$</span><span class="Identifier">k</span>   { <span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Constant">Key: </span><span class="Identifier">$</span><span class="Identifier">k</span><span class="Special">&quot;</span><span class="Statement">;</span>     }  <span class="Comment"># looping over keys</span>
+
+<span class="Statement">for</span> <span class="Identifier">%</span><span class="Identifier">h</span><span class="Statement">.</span><span class="Identifier">values</span> <span class="Statement">-&gt;</span> <span class="Identifier">$</span><span class="Identifier">v</span> { <span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Constant">Value: </span><span class="Identifier">$</span><span class="Identifier">v</span><span class="Special">&quot;</span><span class="Statement">;</span>   }  <span class="Comment"># looping over keys</span>
+
+<span class="Statement">for</span> <span class="Identifier">%</span><span class="Identifier">h</span> <span class="Statement">-&gt;</span> <span class="Identifier">$</span><span class="Identifier">pair</span>     { <span class="Identifier">say</span> <span class="Special">&quot;</span><span class="Constant">Pair: </span><span class="Identifier">$</span><span class="Identifier">pair</span><span class="Special">&quot;</span><span class="Statement">;</span> }  <span class="Comment"># looping over key/value pairs</span>
+
+
+<span class="Comment">## C style loops - use an initialized variable, with condition and accumulator</span>
 <span class="Statement">loop</span> (<span class="Special">my</span> <span class="Identifier">$</span><span class="Identifier">i</span> <span class="Statement">=</span> <span class="Constant">0</span><span class="Statement">;</span> <span class="Identifier">$</span><span class="Identifier">i</span> <span class="Statement">&lt;</span> <span class="Constant">10</span><span class="Statement">;</span> <span class="Identifier">$</span><span class="Identifier">i</span><span class="Statement">++</span>) {
-  <span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">i</span><span class="Statement">;</span>
+    <span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">i</span><span class="Statement">;</span>
 }
 
-<span class="Comment"># While / Until loops</span>
+<span class="Comment"># infinite loop - use `loop` without parenthesis </span>
+<span class="Special">my</span> <span class="Identifier">$</span><span class="Identifier">j</span> <span class="Statement">=</span> <span class="Constant">0</span><span class="Statement">;</span>
+<span class="Statement">loop</span> {                   <span class="Comment"># this would loop forever if it wasn't for the `last`</span>
+    <span class="Identifier">say</span> <span class="Identifier">$</span><span class="Identifier">j</span><span class="Statement">++;</span>            <span class="Comment"># statement</span>
+    <span class="Special">last</span> <span class="Statement">if</span> <span class="Identifier">$</span><span class="Identifier">j</span> <span class="Statement">==</span> <span class="Constant">10</span><span class="Statement">;</span>
+}
+
+<span class="Comment">## while / until loops</span>
 <span class="Special">my</span> <span class="Identifier">$</span><span class="Identifier">x</span> <span class="Statement">=</span> <span class="Constant">1</span><span class="Statement">;</span>
 
-<span class="Statement">while</span> <span class="Identifier">$</span><span class="Identifier">x</span> <span class="Statement">&lt;</span> <span class="Constant">4</span> { <span class="Comment"># While loops work while the expression is TRUE</span>
-  <span class="Identifier">print</span> <span class="Identifier">$</span><span class="Identifier">x</span><span class="Statement">++;</span>
+<span class="Statement">while</span> <span class="Identifier">$</span><span class="Identifier">x</span> <span class="Statement">&lt;</span> <span class="Constant">4</span> {           <span class="Comment"># `while` loops work while the expression is TRUE</span>
+    <span class="Identifier">print</span> <span class="Identifier">$</span><span class="Identifier">x</span><span class="Statement">++;</span>
 }
 
 <span class="Identifier">$</span><span class="Identifier">x</span> <span class="Statement">=</span> <span class="Constant">1</span><span class="Statement">;</span>
-
-<span class="Identifier">print</span> <span class="Identifier">$</span><span class="Identifier">x</span><span class="Statement">++</span> <span class="Statement">while</span> <span class="Identifier">$</span><span class="Identifier">x</span> <span class="Statement">&lt;</span> <span class="Constant">4</span><span class="Statement">;</span>
+<span class="Identifier">print</span> <span class="Identifier">$</span><span class="Identifier">x</span><span class="Statement">++</span> <span class="Statement">while</span> <span class="Identifier">$</span><span class="Identifier">x</span> <span class="Statement">&lt;</span> <span class="Constant">4</span><span class="Statement">;</span> <span class="Comment"># statement modifier form</span>
 
 <span class="Identifier">$</span><span class="Identifier">x</span> <span class="Statement">=</span> <span class="Constant">1</span><span class="Statement">;</span>
-
-<span class="Statement">until</span> <span class="Identifier">$</span><span class="Identifier">x</span> <span class="Statement">&gt;</span> <span class="Constant">3</span> { <span class="Comment"># Until loops work while the expression is FALSE</span>
-  <span class="Identifier">print</span> <span class="Identifier">$</span><span class="Identifier">x</span><span class="Statement">++;</span>
+<span class="Statement">until</span> <span class="Identifier">$</span><span class="Identifier">x</span> <span class="Statement">&gt;</span> <span class="Constant">3</span> {           <span class="Comment"># Until loops work while the expression is FALSE</span>
+    <span class="Identifier">print</span> <span class="Identifier">$</span><span class="Identifier">x</span><span class="Statement">++;</span>
 }
+
+<span class="Identifier">$</span><span class="Identifier">x</span> <span class="Statement">=</span> <span class="Constant">3</span><span class="Statement">;</span>
+<span class="Identifier">print</span> <span class="Identifier">$</span><span class="Identifier">x</span><span class="Statement">++</span> <span class="Statement">until</span> <span class="Identifier">$</span><span class="Identifier">x</span> <span class="Statement">&gt;</span> <span class="Constant">3</span><span class="Statement">;</span> <span class="Comment"># statement modifier form</span>
 </pre>
 
       </div>
