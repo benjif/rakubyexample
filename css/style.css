@@ -66,6 +66,9 @@ html, body {
   #nav ul {
     padding-left: 0;
   }
+  #nav li {
+    margin-bottom: 5px;
+  }
   #content {
     border: none;
     float: none;
