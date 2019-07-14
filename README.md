@@ -1,6 +1,6 @@
 # Perl 6 By Example
 
-See it in action [here](https://ijneb.github.io/p6byexample/).
+See it in action [here](https://benjif.github.io/p6byexample/).
 
 ## Why?
 
