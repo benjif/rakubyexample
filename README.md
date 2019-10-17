@@ -1,6 +1,6 @@
-# Perl 6 By Example
+# Raku By Example
 
-See it in action [here](https://benjif.github.io/p6byexample/).
+See it in action [here](https://benjif.github.io/rakubyexample/).
 
 ## Why?
 
@@ -9,8 +9,6 @@ Several other languages that I've encountered offer a variation of the "\* by ex
 ## Contributing
 
 To contribute, fork this repository and add any examples to the `examples` folder. Then, generate the HTML and CSS.
-
-If you'd like to contribute without making a pull request, feel free to add an issue.
 
 ### Dependencies
 
